@@ -1,0 +1,28 @@
+.main-content{
+    min-height: calc(100vh - 120px);
+  }
+  .dataTables_filter {
+    float:right;
+    margin-bottom: 1em;
+    
+    &:after {
+      clear:both;
+    }
+  }
+  .white-sp-normal{
+    white-space: normal !important;
+    line-height: normal !important;
+  }
+  .badge-success{
+    background-color: #4b49ac;
+  }
+  .badge-success a{
+    color: #fff;
+  }
+  .profile_pic{
+    background-size: cover;
+    background-repeat:no-repeat;
+    height: 400px;
+    background-position: center;
+    border-radius: 16%
+  }

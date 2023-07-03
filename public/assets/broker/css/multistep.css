@@ -1,0 +1,61 @@
+#multistep_form fieldset:not(:first-of-type) {
+    display: none;
+  }
+  #policy-head{
+    padding: 60px 0px;
+  }
+  form .help {
+    color: #737373;
+    display: block;
+    font-size: 0.875rem;
+    margin-top: 5px;
+  }
+  .form_part{
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+  }
+  .form_font{
+    font-size: 14px;
+  }
+  .tab{
+    display: none;
+    width: 100%;
+    height: 50%;
+    margin: 0px auto;
+  }
+  .current{
+    display: block;
+  }
+  .error {
+    color: #f00;
+  }
+  .policy-heading{
+    background-image: linear-gradient(120deg, #0519a7, #2b56cf);
+    padding: 40px 0px;
+  }
+  .policy-heading h4{
+    color: white;
+  }
+  .progress{
+    margin-bottom: 40px;
+    height: 30px;
+    background: #d8dbf0;
+    border: 1px solid #2953cd;
+  }
+  .progress .color{
+    background-color: #2953cd;
+  }
+  .hidden{
+    display: none;
+  }
+  ul.list-icons{
+    list-style: none;
+  }
+  ul.list-icons.tick li {
+    background-image: url(/images/tick.png);
+    background-position: 0 50%;
+    background-repeat: no-repeat;
+    background-size: 16px 16px;
+    padding-left: 1.375rem;
+  }
