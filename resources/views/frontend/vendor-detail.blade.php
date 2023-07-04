@@ -6,7 +6,7 @@
 @section('content')
 
 <!--Page Title-->
-<section class="page-title" style="background-image:url(images/background/6.jpg)">
+<section class="page-title" style="background-image:url({{ asset('assets/images/background/5.jpg')}})">
     <div class="auto-container">
         <div class="clearfix">
             <div class="pull-left">

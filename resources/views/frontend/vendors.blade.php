@@ -45,7 +45,7 @@
                     </div>
                     <div class="lower-box">
                         <h3><a href="{{ route('vendordetail',encrypt($agent->id))}}">{{ $agent->username }}</a></h3>
-                        <div class="designation">Agent</div>
+                        <div class="designation">{{ $agent->first_name }}</div>
                     </div>
                 </div>
             </div>

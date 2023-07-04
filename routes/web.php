@@ -47,7 +47,7 @@ Route::controller(frontendController::class)->group(function () {
 Route::controller(propertyController::class)->group(function () {
     Route::get('properties', 'properties')->name('properties');
     Route::post('sortby', 'sortby')->name('sortby');
-    Route::get('search/property', 'propertysearch')->name('search');
+    Route::get('search', 'propertysearch')->name('search');
     Route::get('vendors', 'vendors')->name('vendors');
     Route::get('vendor/{id}', 'vendordetail')->name('vendordetail');
 });
