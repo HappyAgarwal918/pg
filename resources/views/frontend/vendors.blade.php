@@ -33,7 +33,7 @@
             <div class="separator"></div>
         </div>
         <div class="row clearfix">
-            @foreach($data['vendors'] as $agent)
+            @foreach($data as $agent)
             <!--Team Block-->
             <div class="team-block col-lg-3 col-md-4 col-sm-6 col-xs-12">
                 <div class="inner-box">

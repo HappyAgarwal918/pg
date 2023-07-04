@@ -1,5 +1,5 @@
 <!--Property Form Widget-->
-<div class="property-form-widget">
+<div class="property-form-widget m-0">
 
     <div class="inner-widget">
         

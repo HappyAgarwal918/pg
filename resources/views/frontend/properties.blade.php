@@ -4,11 +4,19 @@
 @section('description', 'Shina Real Estate HTML Template')
 
 @section('content')
+<!--Page Title-->
+<section class="py-5" style="background-image:url({{ asset('assets/images/background/6.png')}})">
+    <div class="auto-container">
+        <div class="clearfix">
+            @include('frontend.filter')
+        </div>
+    </div>
+</section>
+<!--End Page Title-->
 
 <!--Property Section-->
 <section class="property-section">
 	<div class="auto-container">
-        @include('frontend.filter')
     	<!--Sec Title-->
         <div class="sec-title centered">
         	<div class="title">Our Featured Properties For Rent</div>
