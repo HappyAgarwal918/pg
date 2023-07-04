@@ -20,7 +20,7 @@ class frontendController extends Controller
         $wishlist = [];
         $data['testimonial'] = testimonial::get();
         $data['properties'] = properties::with('propertyuser')->get();
-        $data['vendors'] = User::where('type', 2)->get();
+        $data['vendors'] = User::where('type', 2)->orWhere('type', 3)->get();
         if (Auth()->user()) {
             $wishlist = wishlist::where('user_id', Auth()->user()->id)->get();
         }

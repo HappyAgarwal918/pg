@@ -44,8 +44,7 @@
                     <td class="white-sp-normal">{{ $feedback->rating }}</td>
                     <td class="white-sp-normal">{{ $feedback->feedback }}</td>
                     <td>
-                      <!-- <div class="badge badge-success badge-success-alt white-sp-normal"><a href="{{ route('feedback.edit', encrypt($feedback->id)) }}" data-toggle="modal" data-target="#modal1">Edit</a></div> -->
-                      <div class="badge badge-success badge-success-alt white-sp-normal"><a href="{{ route('feedback.show', encrypt($feedback->id)) }}" data-toggle="modal" data-target="#modal2">View</a></div>
+                      <div class="badge badge-success badge-success-alt white-sp-normal"><a href="{{ route('feedback.show', encrypt($feedback->id)) }}" data-toggle="modal" data-target="#modal">View</a></div>
                       <div class="badge badge-success badge-success-alt white-sp-normal">
                       <a href="{{ route('feedback.destroy', encrypt($feedback->id)) }}"
                                onclick="event.preventDefault();
@@ -69,36 +68,9 @@
     </div>
 </div>
 
-<!-- Modal1
-<div class="modal fade" id="modal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Edit Review & Rating</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      	<div class="modal-body">
-	        <div class="mb-3">
-          <div class="form-group">
-            <label for="feedback">How was your experience</label>
-                <textarea class="form-control" id="feedback" name="feedback" rows="10" placeholder="Write your feedback here"></textarea>
-                    </div>
-                    <button type="submit" class="col-md-12 btn btn-primary mt-5">Submit Feedback</button>
-	        </div>
-      	</div>
-      	<div class="modal-footer">
-        	<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        	<button type="submit" class="btn btn-primary">Save changes</button>
-      	</div>
-    </div>
-  </div>
-</div> -->
+<!--Modal--->
 
-<!--Modal 2--->
-
-<div class="modal fade" id="modal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">

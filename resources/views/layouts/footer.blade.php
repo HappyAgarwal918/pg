@@ -5,9 +5,9 @@
         <div class="upper-box">
         	<div class="row clearfix">
                 <!--Logo Column-->
-                <div class="logo-column col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                <div class="logo-column col-lg-3 col-md-3 col-sm-12 col-xs-12 align-self-end">
                 	<div class="logo">
-                    	<a href="{{ route('index')}}"><img src="{{ asset(''.$frontend['logo'][0]->path)}}" alt="" /></a>
+                    	<a href="{{ route('index')}}"><img src="{{ asset($frontend['logo'][0]->path)}}" alt="" /></a>
                     </div>
                 </div>
                 <!--form Column-->

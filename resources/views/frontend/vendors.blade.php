@@ -38,7 +38,13 @@
             <div class="team-block col-lg-3 col-md-4 col-sm-6 col-xs-12">
                 <div class="inner-box">
                     <div class="image">
-                        <a href="{{ route('vendordetail',encrypt($agent->id))}}"><img src="{{ asset('assets/images/resource/team-1.jpg')}}" alt="" /></a>
+                        <a href="{{ route('vendordetail',encrypt($agent->id))}}">
+                            @if( $agent->profile_pic != NULL)
+                            <img src="{{ asset($agent->profile_pic)}}" alt="" />
+                            @else
+                            <img src="{{ asset('profilepic/default.jpg')}}" alt="" />
+                            @endif
+                        </a>
                         <div class="social-box">
                             <p class="agent-properties"><a href="{{ route('vendordetail',encrypt($agent->id))}}">{{ count($agent['properties']) }} Properties</a></p>
                         </div>

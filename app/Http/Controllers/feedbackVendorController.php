@@ -43,8 +43,6 @@ class feedbackVendorController extends Controller
     {
         $data = $request->except('_token');
         $data['user_id'] = Auth()->user()->id;
-
-        // echo "<pre>";print_r($data);die;
         
         $user = vendorfeedback::create($data);
 

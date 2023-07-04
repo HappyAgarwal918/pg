@@ -1,8 +1,8 @@
 <!-- header.html -->
 <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
   <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-    <a class="navbar-brand brand-logo mr-5" href="index.html"><img src="{{ asset('assets/broker/images/logo.svg')}}" class="mr-2" alt="logo"/></a>
-    <a class="navbar-brand brand-logo-mini" href="index.html"><img src="{{ asset('assets/broker/images/logo-mini.svg')}}" alt="logo"/></a>
+    <a class="navbar-brand brand-logo mx-auto" href="{{ route('index')}}"><img src="{{ asset($frontend['logo'][0]->path) }}" class="mr-2" alt="logo"/></a>
+    <a class="navbar-brand brand-logo-mini" href="{{ route('index')}}"><img src="{{ asset($frontend['logo'][2]->path) }}" alt="logo"/></a>
   </div>
   <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
     <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -40,8 +40,8 @@
       </li>
       <li class="nav-item nav-profile dropdown">
         @if(Auth()->user()->profile_pic == NULL)
-        <a class="nav-link dropdown-toggle nav-profile-img" href="#" data-toggle="dropdown" id="profileDropdown" style="background-image: url({{ asset('assets/broker/images/faces/face2.jpg')}});">
-          <!-- <img src="{{ asset('assets/broker/images/faces/face28.jpg')}}" alt="profile"/> -->
+        <a class="nav-link dropdown-toggle nav-profile-img" href="#" data-toggle="dropdown" id="profileDropdown" style="background-image: url({{ asset('profilepic/default.jpg')}});">
+        <!-- <img src="{{ asset('assets/broker/images/faces/face28.jpg')}}" alt="profile"/> -->
         </a>
         @else
         <a class="nav-link dropdown-toggle nav-profile-img" href="#" data-toggle="dropdown" id="profileDropdown" style="background-image: url({{ asset(Auth()->user()->profile_pic) }});">

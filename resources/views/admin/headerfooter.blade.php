@@ -16,7 +16,7 @@
           <div class="row">
             <div class="col-8">
               <div class="numbers">
-                <img src="{{ asset(''.$frontend['logo'][0]->path)}}" style="height: 48px;">
+                <img src="{{ asset($frontend['logo'][0]->path)}}" style="height: 48px;">
               </div>
             </div>
             <div class="col-4 text-end">
@@ -37,7 +37,7 @@
           <div class="row">
             <div class="col-8">
               <div class="numbers">
-                <img src="{{ asset(''.$frontend['logo'][1]->path)}}" style="height: 48px;">
+                <img src="{{ asset($frontend['logo'][1]->path)}}" style="height: 48px;">
               </div>
             </div>
             <div class="col-4 text-end">
@@ -58,7 +58,7 @@
           <div class="row">
             <div class="col-8">
               <div class="numbers">
-                <img src="{{ asset(''.$frontend['logo'][2]->path)}}" style="height: 48px;">
+                <img src="{{ asset($frontend['logo'][2]->path)}}" style="height: 48px;">
               </div>
             </div>
             <div class="col-4 text-end">

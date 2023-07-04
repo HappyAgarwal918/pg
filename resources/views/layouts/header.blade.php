@@ -1,6 +1,5 @@
 <!-- Main Header-->
 <header class="main-header">
-
 	<!-- Header Top One -->
 	<div class="header-top-one">
     	<div class="auto-container">
@@ -66,7 +65,7 @@
             <!--Logo Box-->
             <div class="logo-box">
                 <div class="logo">
-                    <a href="{{ route('index')}}"><img src="{{ asset(''.$frontend['logo'][0]->path)}}" alt=""></a>
+                    <a href="{{ route('index')}}"><img src="{{ asset($frontend['logo'][0]->path)}}" alt=""></a>
                 </div>
             </div>
             <!--Nav Outer-->
@@ -116,7 +115,7 @@
     	<div class="auto-container clearfix">
         	<!--Logo-->
         	<div class="logo pull-left">
-            	<a href="{{ route('index')}}" class="img-responsive"><img src="{{ asset(''.$frontend['logo'][1]->path)}}" alt="" title=""></a>
+            	<a href="{{ route('index')}}" class="img-responsive"><img src="{{ asset($frontend['logo'][1]->path)}}" alt="" title="" style="max-height: 40px;"></a>
             </div>            
             <!--Right Col-->
             <div class="right-col pull-right">

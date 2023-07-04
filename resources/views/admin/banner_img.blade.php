@@ -34,7 +34,7 @@
 		                </div>
 		              </td>
 		              <td>
-		                <p class="text-xs font-weight-bold mb-0"><img src="{{ asset(''.$banner->img_src) }}" width="150px"></p>
+		                <p class="text-xs font-weight-bold mb-0"><img src="{{ asset($banner->img_src) }}" width="150px"></p>
 		              </td>
 		              <td class="align-middle">
 		                <a class="btn btn-link text-danger text-gradient mb-0" href="{{ route('admin.destroybanner', encrypt($banner->id))}}"><i class="far fa-trash-alt me-2"></i>Delete</a>
