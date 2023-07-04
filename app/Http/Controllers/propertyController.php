@@ -67,18 +67,22 @@ class propertyController extends Controller
             $wishlist = wishlist::where('user_id', Auth()->user()->id)->get();
         }
 
-        if($request->dataval){
-            if ($request->dataval == 'search') {
-                $search = $_GET['search'];
-                echo "<pre>";print_r($search);die;
+        $datasegment = $request->datasegment;
+        $dataval = $request->dataval;
+
+        if($datasegment == 'search'){
+            if($id == 'latest'){
+                $data['properties'] = properties::where('name', 'LIKE', '%' .$dataval.'%')->orWhere('full_address', 'LIKE', '%' .$dataval. '%')->orWhere('locality', 'LIKE', '%' .$dataval.'%')->latest()->get();
             }else{
-                $vendor_id = decrypt($request->dataval);
-                if($id == 'latest'){
-                    $data['properties'] = properties::where('user_id', $vendor_id)->latest()->get();
-                }else{
-                    $data['properties'] = properties::where('user_id', $vendor_id)->get();
-                }
-            }   
+                $data['properties'] = properties::where('name', 'LIKE', '%' .$dataval.'%')->orWhere('full_address', 'LIKE', '%' .$dataval. '%')->orWhere('locality', 'LIKE', '%' .$dataval.'%')->get();
+            }
+        }elseif($datasegment == 'vendor'){
+            $vendor_id = decrypt($dataval);
+            if($id == 'latest'){
+                $data['properties'] = properties::where('user_id', $vendor_id)->latest()->get();
+            }else{
+                $data['properties'] = properties::where('user_id', $vendor_id)->get();
+            }
         }else{
             if($id == 'latest'){
                 $data['properties'] = properties::latest()->get();
