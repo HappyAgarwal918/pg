@@ -30,7 +30,7 @@
           <p class="mb-0 font-weight-normal float-left dropdown-header">Notifications</p>
           <a class="dropdown-item preview-item">
             <div class="preview-item-content">
-              <h6 class="preview-subject font-weight-normal">Application Error Notifications Application Error Notifications Application Error Notifications</h6>
+              <h6 class="preview-subject font-weight-normal">Coming Soon</h6>
               <p class="font-weight-light small-text mb-0 text-muted">
                 Just now
               </p>
@@ -39,9 +39,14 @@
         </div>
       </li>
       <li class="nav-item nav-profile dropdown">
-        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-          <img src="{{ asset('assets/broker/images/faces/face28.jpg')}}" alt="profile"/>
+        @if(Auth()->user()->profile_pic == NULL)
+        <a class="nav-link dropdown-toggle nav-profile-img" href="#" data-toggle="dropdown" id="profileDropdown" style="background-image: url({{ asset('assets/broker/images/faces/face2.jpg')}});">
+          <!-- <img src="{{ asset('assets/broker/images/faces/face28.jpg')}}" alt="profile"/> -->
         </a>
+        @else
+        <a class="nav-link dropdown-toggle nav-profile-img" href="#" data-toggle="dropdown" id="profileDropdown" style="background-image: url({{ asset(Auth()->user()->profile_pic) }});">
+        </a>
+        @endif
         <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
           <a class="dropdown-item" href="{{ route('profile.settings')}}">
             <i class="ti-settings text-primary"></i>
@@ -58,11 +63,11 @@
           </form>
         </div>
       </li>
-      <li class="nav-item nav-settings d-none d-lg-flex">
+      <!-- <li class="nav-item nav-settings d-none d-lg-flex">
         <a class="nav-link" href="#">
           <i class="icon-ellipsis"></i>
         </a>
-      </li>
+      </li> -->
     </ul>
     <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
       <span class="icon-menu"></span>

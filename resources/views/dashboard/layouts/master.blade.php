@@ -28,7 +28,7 @@
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
 
-      @include('dashboard.layouts.rightsidebar')
+
 
       @include('dashboard.layouts.settingpanel')
 

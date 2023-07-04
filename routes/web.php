@@ -12,6 +12,8 @@ use App\Http\Controllers\vendorFeedbackController;
 use App\Http\Controllers\feedbackVendorController;
 use App\Http\Controllers\wishlistController;
 use App\Http\Controllers\propertyController;
+use App\Http\Controllers\Admin\FrontendAdminController;
+use App\Http\Controllers\Admin\UserAdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -94,7 +96,39 @@ All Admin Routes List
 --------------------------------------------
 --------------------------------------------*/
 Route::middleware(['auth', 'user-access:admin'])->group(function () {
-    Route::get('admin/home', [HomeController::class, 'adminHome'])->name('admin.home');
+    Route::group(['prefix' => 'admin'], function () {
+        Route::get('/home', [HomeController::class, 'adminHome'])->name('admin.home');
+        Route::controller(UserAdminController::class)->group(function () {
+            Route::get('/broker', 'broker')->name('admin.broker');
+            Route::get('/owner', 'owner')->name('admin.owner');
+            Route::get('/add', 'newuser')->name('admin.newuser');
+            Route::get('/user', 'user')->name('admin.user');
+            Route::get('/edit/{key}', 'edit')->name('admin.edit');
+            Route::get('/destroy/{key}', 'destroy')->name('admin.destroy');
+            Route::post('/update/name', 'update_name')->name('admin.update_name');
+            Route::post('/update/email', 'update_email')->name('admin.update_email');
+        Route::post('/update/password','update_password')->name('admin.update_pass');
+        });
+        Route::controller(FrontendAdminController::class)->group(function () {
+            Route::get('/frontend/header/footer', 'headerfooter')->name('admin.headerfooter');
+            Route::post('/primarymenu', 'primarymenu')->name('admin.primarymenu');
+            Route::post('/footermenu', 'footermenu')->name('admin.footermenu');
+            Route::post('/footerabout', 'footerabout')->name('admin.footerabout');
+            Route::post('/footercontact', 'footercontact')->name('admin.footercontact');
+            Route::post('/sociallinks', 'sociallinks')->name('admin.sociallinks');
+            Route::post('/logochange', 'logochange')->name('admin.logochange');
+            Route::get('/banner', 'banner')->name('admin.banner');
+            Route::post('/banner/add', 'banneradd')->name('admin.banneradd');
+            Route::get('/destroy/banner/{key}', 'destroybanner')->name('admin.destroybanner');
+            Route::get('/frontend/about', 'aboutusedit')->name('admin.aboutusedit');
+            Route::post('/sponser', 'sponser')->name('admin.sponser');
+            Route::get('/destroy/sponser/{key}', 'destroysponser')->name('admin.destroysponser');
+            Route::get('/blogs', 'adminblogs')->name('admin.blogs');
+            Route::post('/blogs/add', 'addblog')->name('admin.addblog');
+            Route::get('/blog/destroy/{key}', 'destroyblog')->name('admin.destroyblog');
+            Route::get('/settings', 'setting')->name('admin.setting');
+        });
+    });
 });
 
 /*------------------------------------------
