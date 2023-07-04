@@ -33,7 +33,7 @@
                     <th>Vendor Name</th>
                     <th>Rating</th>
                     <th>Reviews</th>
-                    <th>Option</th>
+                    <!-- <th>Option</th> -->
                   </tr>
                 </thead>
                 <tbody>
@@ -43,7 +43,7 @@
                     <td class="white-sp-normal">{{ $feedback['feedbackuser']->username }}</td>
                     <td class="white-sp-normal">{{ $feedback->rating }}</td>
                     <td class="white-sp-normal">{{ $feedback->feedback }}</td>
-                    <td><div class="badge badge-success badge-success-alt white-sp-normal"><a href="">View</a></div></td>
+                    <!-- <td><div class="badge badge-success badge-success-alt white-sp-normal"><a href="">View</a></div></td> -->
                   </tr>
                   @endforeach
                 </tbody>

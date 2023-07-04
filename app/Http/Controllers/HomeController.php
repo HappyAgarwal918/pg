@@ -35,7 +35,7 @@ class HomeController extends Controller
      */
     public function adminHome()
     {
-        return view('errors.check-permission');
+        return view('admin.adminHome');
     }
   
     /**
