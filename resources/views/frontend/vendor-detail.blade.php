@@ -42,10 +42,10 @@
             <div class="image-column col-md-3 col-sm-12 col-xs-12">
                 <div class="image">
                     @if($data->profile_pic != NULL)
-                    <div class="vendor-img" style="background-image:url({{ $data->profile_pic }});"></div>
-                    
+                    <div class="vendor-img" 
+                        style="background-image:url({{ asset($data->profile_pic) }});"></div>
                     @else
-                    <img src="{{ asset('assets/images/resource/team-1.jpg')}}" alt="" />
+                    <img src="{{ asset('profilepic/default.jpg')}}" alt="" />
                     @endif
                 </div>
                 <ul class="list-style-two ms-3 mt-3">

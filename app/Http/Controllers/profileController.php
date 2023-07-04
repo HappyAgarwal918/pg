@@ -115,7 +115,7 @@ class profileController extends Controller
 
                 $data = User::where('id', $user->id)
                             ->update([
-                                'profile_pic'=> env('APP_URL').'/profilepic'.'/'.$input['imagename'],
+                                'profile_pic'=> 'profilepic/'.$input['imagename'],
                             ]);
         
         } catch (\Throwable $th) {

@@ -64,7 +64,7 @@
 <!--End About Section-->
 
 <!--Services Section-->
-<section class="services-section style-two">
+<section class="services-section style-two grey-bg">
 	<div class="auto-container">
     	<!--Sec Title-->
         <div class="sec-title centered">
@@ -105,38 +105,6 @@
 </section>
 <!--End Services Section-->
 
-<!--Team Section-->
-<section class="team-section grey-bg">
-	<div class="auto-container">
-    	<!--Sec Title-->
-        <div class="sec-title centered">
-        	<div class="title">Meet Our Agents</div>
-            <h2>Our Best Agents</h2>
-            <div class="separator"></div>
-        </div>
-        <div class="row clearfix">
-        	@foreach($data['agents'] as $agent)
-            <!--Team Block-->
-            <div class="team-block col-lg-3 col-md-4 col-sm-6 col-xs-12">
-            	<div class="inner-box">
-                	<div class="image">
-                        <a href="{{ route('properties',encrypt($agent->id))}}"><img src="{{ asset('assets/images/resource/team-1.jpg')}}" alt="" /></a>
-                        <div class="social-box">
-                            <p class="agent-properties"><a href="{{ route('properties',encrypt($agent->id))}}">{{ count($agent['properties']) }} Properties</a></p>
-                        </div>
-                    </div>
-                    <div class="lower-box">
-                        <h3><a href="{{ route('properties',encrypt($agent->id))}}">{{ $agent->username }}</a></h3>
-                        <div class="designation">Agent</div>
-                    </div>
-                </div>
-            </div>
-            @endforeach            
-        </div>        
-    </div>
-</section>
-<!--End Team Section-->
-
 <!--Clients Section-->
 <section class="clients-section style-two">
     <div class="auto-container">
@@ -144,7 +112,7 @@
             <!--Sponsors Carousel-->
             <ul class="sponsors-carousel owl-carousel owl-theme">
                 @foreach($data['sponser'] as $sponser)
-                <li class="slide-item"><figure class="image-box"><a href="#"><img src="{{ asset(''.$sponser->path)}}" alt="" title="{{ $sponser->name }}"></a></figure></li>
+                <li class="slide-item"><figure class="image-box"><a href="#"><img src="{{ asset($sponser->path)}}" alt="" title="{{ $sponser->name }}"></a></figure></li>
                 @endforeach
             </ul>
         </div>

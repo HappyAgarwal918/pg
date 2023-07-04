@@ -186,10 +186,11 @@
         <div class="card-body">
           <h4 class="card-title">Profile Picture</h4>
             @if($data->profile_pic == NULL)
-            <div class="profile_pic" style="background-image: url({{ asset('assets/broker/images/faces/face2.jpg')}});">
+            <div class="profile_pic" 
+                style="background-image: url({{ asset('profilepic/default.jpg')}});">
             </div>
             @else
-            <div class="profile_pic" style="background-image: url({{ $data->profile_pic }});">
+            <div class="profile_pic" style="background-image: url({{ asset($data->profile_pic) }});">
             </div>
             @endif              
             <a type="button" class="btn btn-primary mt-4" data-toggle="modal" data-target="#modal2">Edit Profile Picture</a>

@@ -102,7 +102,7 @@ class FrontendAdminController extends Controller
             $data = logo::where('id', $request->id)
                     ->update([
                         'name' => $input['imagename'],
-                        'path' => env('APP_URL').'logo/'.$input['imagename'],
+                        'path' => 'logo/'.$input['imagename'],
                     ]);
 
             return back()->with('successful_message', 'Logo Updated Successfully');
@@ -141,7 +141,7 @@ class FrontendAdminController extends Controller
 
             $data = banner::create([
                         'name' => $input['imagename'],
-                        'img_src' => env('APP_URL').'banner/'.$input['imagename'],
+                        'img_src' => 'banner/'.$input['imagename'],
                     ]);
 
             return back()->with('successful_message', 'Banner Added Successfully');
@@ -191,7 +191,7 @@ class FrontendAdminController extends Controller
             $data = sponser::create([
                         'name' => $request->name,
                         'img' => $input['imagename'],
-                        'path' => env('APP_URL').'sponser/'.$input['imagename'],
+                        'path' => 'sponser/'.$input['imagename'],
                     ]);
 
             return back()->with('successful_message', 'Sponser Added Successfully');
@@ -245,7 +245,7 @@ class FrontendAdminController extends Controller
             $data = sponser::create([
                         'name' => $request->name,
                         'img' => $input['imagename'],
-                        'path' => env('APP_URL').'sponser/'.$input['imagename'],
+                        'path' => 'sponser/'.$input['imagename'],
                     ]);
 
             return back()->with('successful_message', 'Sponser Added Successfully');

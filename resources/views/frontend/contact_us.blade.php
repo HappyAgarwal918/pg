@@ -77,7 +77,7 @@
             <!--Sponsors Carousel-->
             <ul class="sponsors-carousel owl-carousel owl-theme">
                 @foreach($data['sponser'] as $sponser)
-                <li class="slide-item"><figure class="image-box"><a href="#"><img src="{{ asset(''.$sponser->path)}}" alt="" title="{{ $sponser->name }}"></a></figure></li>
+                <li class="slide-item"><figure class="image-box"><a href="#"><img src="{{ asset($sponser->path)}}" alt="" title="{{ $sponser->name }}"></a></figure></li>
                 @endforeach
             </ul>
         </div>
