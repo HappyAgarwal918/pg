@@ -1,4 +1,6 @@
-<?php   
+<?php
+$segment = NULL;   
+$value = NULL;   
 if (Request::segment(1) == 'search') {
     $segment = 'search'; 
     $value = $_GET['search'];

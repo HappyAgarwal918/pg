@@ -72,14 +72,14 @@ class propertyController extends Controller
 
         if($datasegment == 'search'){
             if($id == 'latest'){
-                $data['properties'] = properties::where('name', 'LIKE', '%' .$dataval.'%')->orWhere('full_address', 'LIKE', '%' .$dataval. '%')->orWhere('locality', 'LIKE', '%' .$dataval.'%')->latest()->get();
+                $data['properties'] = properties::where('name', 'LIKE', '%' .$dataval.'%')->orWhere('full_address', 'LIKE', '%' .$dataval. '%')->orWhere('locality', 'LIKE', '%' .$dataval.'%')->orderBy('created_at','desc')->get();
             }else{
                 $data['properties'] = properties::where('name', 'LIKE', '%' .$dataval.'%')->orWhere('full_address', 'LIKE', '%' .$dataval. '%')->orWhere('locality', 'LIKE', '%' .$dataval.'%')->get();
             }
         }elseif($datasegment == 'vendor'){
             $vendor_id = decrypt($dataval);
             if($id == 'latest'){
-                $data['properties'] = properties::where('user_id', $vendor_id)->latest()->get();
+                $data['properties'] = properties::where('user_id', $vendor_id)->orderBy('created_at','desc')->get();
             }else{
                 $data['properties'] = properties::where('user_id', $vendor_id)->get();
             }
