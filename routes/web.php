@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\searchController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\HomeController;
@@ -12,6 +11,7 @@ use App\Http\Controllers\MailController;
 use App\Http\Controllers\vendorFeedbackController;
 use App\Http\Controllers\feedbackVendorController;
 use App\Http\Controllers\wishlistController;
+use App\Http\Controllers\propertyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,20 +41,21 @@ Route::controller(frontendController::class)->group(function () {
     Route::get('privacy', 'privacy')->name('privacy');
     Route::get('terms-and-conditions', 'tandc')->name('tandc');
     Route::get('blogs', 'blogs')->name('blogs');
-    Route::get('vendors', 'vendors')->name('vendors');
-    Route::get('vendor/{id}', 'vendordetail')->name('vendordetail');
-    Route::get('gallery', 'gallery')->name('gallery');
-    Route::get('properties', 'properties')->name('properties');    
+    Route::get('gallery', 'gallery')->name('gallery');    
 });
 
- Route::get('search/page', [searchController::class, 'index'])->name('search.page');
- Route::post('/search', [searchController::class, 'search'])->name('search');
- Route::post('sortby', [searchController::class,'sortby'])->name('sortby');
+Route::controller(propertyController::class)->group(function () {
+    Route::get('properties', 'properties')->name('properties');
+    Route::post('sortby', 'sortby')->name('sortby');
+    Route::get('search/property', 'propertysearch')->name('search');
+    Route::get('vendors', 'vendors')->name('vendors');
+    Route::get('vendor/{id}', 'vendordetail')->name('vendordetail');
+});
 
 Route::get('send-mail', [MailController::class, 'index']);
 
 Route::middleware(['auth'])->group(function () {
-    Route::controller(frontendController::class)->group(function () {
+    Route::controller(propertyController::class)->group(function () {
         Route::get('property/detail/{id}', 'propertydetail')->name('propertydetail');
     });
     Route::controller(profileController::class)->group(function () {

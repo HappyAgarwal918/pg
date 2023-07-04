@@ -69,54 +69,9 @@ class frontendController extends Controller
         return view('frontend.blogs', compact('data'));
     }
 
-    public function vendors()
-    {
-        $data['vendors'] = User::where('type', 2)->with('properties')->get();
-        $data['owner'] = User::where('type', 3)->get();
-
-        return view('frontend.vendors', compact('data'));
-    }
-
-    public function vendordetail($id)
-    {
-        $wishlist = [];
-        $vendor_id = decrypt($id);
-
-        $data = User::where('id', $vendor_id)->with('properties')->first();
-        if (Auth()->user()) {
-            $wishlist = wishlist::where('user_id', Auth()->user()->id)->get();
-        }
-
-        return view('frontend.vendor-detail', compact('data','wishlist'));
-    }
-
     public function gallery()
     {
         return view('frontend.gallery');
-    }
-
-    public function properties()
-    {
-        $wishlist = [];
-        $data['properties'] = properties::with('propertyuser')->get();
-        if (Auth()->user()) {
-            $wishlist = wishlist::where('user_id', Auth()->user()->id)->get();
-        }
-
-        return view('frontend.properties', compact('data', 'wishlist'));
-    }
-
-    public function propertydetail(Request $request, $id)
-    {
-        $decryptid = decrypt($id);
-        
-        $data = properties::where('id', $decryptid)->with('propertyuser')->first();
-        $data['room_type'] = explode(", ", $data->room_type);
-        $data['amenities'] = explode(", ", $data->amenities);
-
-        // echo "<pre>";print_r($data);die;
-        
-        return view('frontend.property_detail', compact('data'));
     }
 
     public function display(Request $request)

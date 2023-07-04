@@ -53,66 +53,63 @@
                         <li><a href="{{ route('login') }}"> login </a>/<a href="{{ route('register') }}"> Register </a> </li>
                         @endauth
                     </ul>
-                </div>
-                
+                </div>  
             </div>
-            
         </div>
     </div>
     <!-- Header Top One End -->
     
-    <!-- Main Box -->
-	<div class="main-box">
-    	<div class="auto-container">
-        	<div class="outer-container clearfix">
-                <!--Logo Box-->
-                <div class="logo-box">
-                    <div class="logo">
-                        <a href="{{ route('index')}}"><img src="{{ asset(''.$frontend['logo'][0]->path)}}" alt=""></a>
-                    </div>
+<!-- Main Box -->
+<div class="main-box">
+	<div class="auto-container">
+    	<div class="outer-container clearfix">
+            <!--Logo Box-->
+            <div class="logo-box">
+                <div class="logo">
+                    <a href="{{ route('index')}}"><img src="{{ asset(''.$frontend['logo'][0]->path)}}" alt=""></a>
                 </div>
-                <!--Nav Outer-->
-                <div class="nav-outer clearfix">
-                    <!-- Main Menu -->
-                    <nav class="main-menu navbar navbar-dark navbar-expand-md">
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        
-                        <div class="navbar-collapse collapse clearfix"  id="navbarToggleExternalContent">
-                            <ul class="navigation clearfix">
-                                @foreach($frontend['menu'] as $primarymenu)
-                                <li class="{{ (request()->is('/') && $primarymenu->route == 'index')  ? 'current' : '' }}{{ (request()->is($primarymenu->route.'*')) ? 'current' : '' }}"><a href="{{ route($primarymenu->route)}}">{{ $primarymenu->name }}</a></li>
-                                @endforeach
-                             </ul>
-                        </div>
-                    </nav>
-                    <!-- Main Menu End-->
+            </div>
+            <!--Nav Outer-->
+            <div class="nav-outer clearfix">
+                <!-- Main Menu -->
+                <nav class="main-menu navbar navbar-dark navbar-expand-md">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
                     
-                    <!--Search Box-->
-                    <div class="search-box-outer">
-                        <div class="dropdown">
-                            <button class="search-box-btn dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false"><span class="fa fa-search"></span></button>
-                            <ul class="dropdown-menu search-panel dropdown-menu-end" aria-labelledby="dropdownMenuButton2">
-                                <li class="panel-outer">
-                                    <div class="form-container">
-                                        <form method="POST" action="{{ route('search')}}">
-                                            @csrf
-                                            <div class="form-group">
-                                                <input type="search" name="search" value="" placeholder="Search Here" required>
-                                                <button type="submit" class="search-btn" href="{{ route('search.page')}}" style="background-color: #71b100;"><span class="fa fa-search"></span></button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
+                    <div class="navbar-collapse collapse clearfix"  id="navbarToggleExternalContent">
+                        <ul class="navigation clearfix">
+                            @foreach($frontend['menu'] as $primarymenu)
+                            <li class="{{ (request()->is('/') && $primarymenu->route == 'index')  ? 'current' : '' }}{{ (request()->is($primarymenu->route.'*')) ? 'current' : '' }}"><a href="{{ route($primarymenu->route)}}">{{ $primarymenu->name }}</a></li>
+                            @endforeach
+                         </ul>
+                    </div>
+                </nav>
+                <!-- Main Menu End-->
+                
+                <!--Search Box-->
+                <div class="search-box-outer">
+                    <div class="dropdown">
+                        <button class="search-box-btn dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false"><span class="fa fa-search"></span></button>
+                        <ul class="dropdown-menu search-panel dropdown-menu-end" aria-labelledby="dropdownMenuButton2">
+                            <li class="panel-outer">
+                                <div class="form-container">
+                                    <form action="{{ route('search')}}" method="GET" role="search">
+                                        <div class="form-group">
+                                            <input type="search" name="search" value="" placeholder="Search Here" required>
+                                            <button type="submit" class="search-btn" style="background-color: #71b100;"><span class="fa fa-search"></span></button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
                 </div>
-                <!--Nav Outer End-->  
-        	</div>    
-        </div>
+            </div>
+            <!--Nav Outer End-->  
+    	</div>    
     </div>
+</div>
 	
     <!--Sticky Header-->
     <div class="sticky-header">
