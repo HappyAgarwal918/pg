@@ -91,7 +91,7 @@
                     </div>
                     <div class="lower-box">
                         <h3><a href="{{ route('vendordetail',encrypt($agent->id))}}">{{ $agent->first_name }}  {{ $agent->last_name}}</a></h3>
-                        <div class="designation">Broker</div>
+                        <div class="designation text-capitalize">{{ $agent->type }}</div>
                     </div>
                 </div>
             </div>

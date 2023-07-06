@@ -47,6 +47,15 @@
       position: relative;
     }
   </style>
+  <style type="text/css">
+    .profile_pic {
+      background-size: cover;
+      background-repeat: no-repeat;
+      height: 400px;
+      background-position: center;
+      border-radius: 16%;
+    }
+  </style>
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/jszip-2.5.0/dt-1.13.1/b-2.3.3/b-colvis-2.3.3/b-html5-2.3.3/r-2.4.0/datatables.min.css"/>
   @yield('css')
 </head>

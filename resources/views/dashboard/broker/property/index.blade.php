@@ -63,10 +63,10 @@
                         <div class="badge badge-success badge-success-alt white-sp-normal"><a href="{{ route('broker.show',encrypt($properties->id)) }}">View</a></div>
                         <div class="badge badge-success badge-success-alt white-sp-normal">
                         <a href="{{ route('broker.destroy', encrypt($properties->id)) }}"
-                               onclick="event.preventDefault();
-                                             document.getElementById('delete-property').submit();">
-                                Delete
-                            </a>
+                            onclick="event.preventDefault();
+                            document.getElementById('delete-property').submit();">
+                            Delete
+                        </a>
                         <form id="delete-property" action="{{ route('broker.destroy', encrypt($properties->id)) }}" method="POST" >
                         <input name="_method" type="hidden" value="DELETE">
                           @csrf

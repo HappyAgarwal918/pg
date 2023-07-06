@@ -1,12 +1,26 @@
 @extends('admin.layouts.master')
 
-@section('title', 'Settings')
-@section('page', 'Settings')
+@section('title', 'Edit Profile')
+@section('page', 'EditUser')
 @section('description', 'Dashboard')
 
 @section('content')
 <div class="container-fluid p-0">
-  <div class="row">            
+  <div class="row">
+    <div class="col-md-4 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                @if($data->profile_pic == NULL)
+                <div class="profile_pic" 
+                    style="background-image: url({{ asset('profilepic/default.jpg')}});">
+                </div>
+                @else
+                <div class="profile_pic" style="background-image: url({{ asset($data->profile_pic) }});">
+                </div>
+                @endif
+          </div>
+        </div>
+    </div>
     <div class="col-md-4 mb-lg-0 mb-4">
       <div class="card p-3">
         <div class="card-header pb-0 p-3">
@@ -70,15 +84,11 @@
       <div class="card">
         <div class="card-body">
           <h4 class="card-title">Password Update</h4>
-          <form action="{{ route('update.password')}}" method="POST">
+          <form action="{{ route('user.password', encrypt($data->id))}}" method="POST">
             @csrf
             <div class="form-group">
-              <label for="current_password" class="col-form-label">Current Password</label>
-              <input type="password" class="form-control" id="current_password" placeholder="Enter your current password" name="current_password" value="">
-            </div>
-            <div class="form-group">
-              <label for="new_password" class="col-form-label">New Password</label>
-              <input type="password" class="form-control" id="new_password" placeholder="Enter the new password" name="new_password" value="">
+              <label for="password" class="col-form-label">Password</label>
+              <input type="password" class="form-control" id="password" placeholder="Enter the new password" name="password" value="">
             </div>
             <div class="form-group">
               <label for="confirm_password" class="col-form-label">Confirm Password</label>
@@ -91,25 +101,10 @@
         </div>
       </div>
     </div>
-    <div class="col-md-4 grid-margin stretch-card">
-        <div class="card">
-            <div class="card-body">
-              <h4 class="card-title">Profile Picture</h4>
-                @if($data->profile_pic == NULL)
-                <div class="profile_pic" 
-                    style="background-image: url({{ asset('profilepic/default.jpg')}});">
-                </div>
-                @else
-                <div class="profile_pic" style="background-image: url({{ asset($data->profile_pic) }});">
-                </div>
-                @endif              
-                <a type="button" class="btn btn-primary mt-4" data-bs-toggle="modal" data-bs-target="#modal2">Edit Profile Picture</a>
-          </div>
-        </div>
-    </div>
   </div>
 </div>
-<!-- Modal -->
+
+<!-- Basic Profile Modal -->
 <div class="modal fade" id="modal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -119,34 +114,31 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form action="{{ route('profile.edit')}}" method="POST">
+      <form action="{{ route('user.update',encrypt($data->id))}}" method="POST">
+        <input name="_method" type="hidden" value="PUT">
             @csrf
         <div class="modal-body">
           <div class="mb-3">
-                <label for="first_name" class="form-label">First Name</label>
-                <input type="text" class="form-control" name="first_name" value="{{ $data->first_name }}">
-            </div>
+              <label for="first_name" class="form-label">First Name</label>
+              <input type="text" class="form-control" name="first_name" value="{{ $data->first_name }}">
+          </div>
           <div class="mb-3">
-                <label for="last_name" class="form-label">Last Name</label>
-                <input type="text" class="form-control" name="last_name" value="{{ $data->last_name }}">
-            </div>
-            <div class="mb-3">
-                <label for="username" class="form-label">Username</label>
-                <input type="text" class="form-control" name="username" value="{{ $data->username }}">
-            </div>
-            <div class="mb-3">
-                <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" name="email" value="{{ $data->email }}">
-            </div>
-            <div class="mb-3">
-                <label for="mobile" class="form-label">Phone Number</label>
-                <input type="text" class="form-control" name="mobile" value="{{ $data->mobile }}">
-            </div>
-            <div class="mb-3">
-                <label for="recent_password" class="form-label">Recent Password</label>
-                <input type="password" class="form-control" name="recent_password" value="">
-            </div>
-            <div class="mb-3">
+              <label for="last_name" class="form-label">Last Name</label>
+              <input type="text" class="form-control" name="last_name" value="{{ $data->last_name }}">
+          </div>
+          <div class="mb-3">
+              <label for="username" class="form-label">Username</label>
+              <input type="text" class="form-control" name="username" value="{{ $data->username }}">
+          </div>
+          <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" class="form-control" name="email" value="{{ $data->email }}">
+          </div>
+          <div class="mb-3">
+              <label for="mobile" class="form-label">Phone Number</label>
+              <input type="text" class="form-control" name="mobile" value="{{ $data->mobile }}">
+          </div>
+          <div class="mb-3">
               <label class="form-label">Gender</label>
               <div class="row">
               <div class="col-sm-3">
@@ -173,47 +165,17 @@
                   </label>
                 </div>
               </div>
-              </div>
             </div>
+          </div>
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Save changes</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Save changes</button>
         </div>
       </form>
     </div>
   </div>
 </div>
 <!--Basic Profile End -->
-
-<!--Profile Pic Updation--->
-
-<div class="modal fade" id="modal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Update Profile Picture</h5>
-        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <form action="{{ route('update.profilepic')}}" method="POST" enctype="multipart/form-data">
-            @csrf
-        <div class="modal-body">
-            <div class="mb-3">
-                <label for="profile_pic" class="form-label">Profile Picture</label>
-                <input type="file" class="form-control" name="profile_pic" value="">
-            </div>
-        </div>
-        <div class="modal-footer">
-           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Save changes</button>
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
-
-<!--End Modal-->
 
 @endsection

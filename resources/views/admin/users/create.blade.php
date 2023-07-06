@@ -14,7 +14,7 @@
 		          <h6>Register New</h6>
 		        </div>
 		        <div class="card-body p-4">
-		        	<form>
+		        	<form action="{{ route('user.store')}}" method="POST">
 					    <div class="row mb-3">
 					        <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
 					        <div class="col-sm-9">
@@ -37,7 +37,7 @@
 					    </div>
 					    <div class="row">
 					        <div class="col-sm-10 offset-sm-2">
-					            <button type="submit" class="btn btn-primary">Sign in</button>
+					            <button type="submit" class="btn btn-primary">Create User</button>
 					        </div>
 					    </div>
 					</form>
