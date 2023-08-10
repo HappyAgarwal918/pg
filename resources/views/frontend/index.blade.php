@@ -64,7 +64,7 @@
 </section>
 
 <!--Team Section-->
-<section class="team-section style-two">
+<section class="team-section style-two pt-0">
 	<div class="auto-container">
     	<!--Sec Title-->
         <div class="sec-title centered">
