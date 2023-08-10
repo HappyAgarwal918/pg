@@ -69,7 +69,7 @@
             <div class="separator"></div>
             <div class="position-absolute end-0">@include('frontend.sort')</div>
         </div>
-        <div class="row clearfix">
+        <div class="row clearfix" id="property">
             @include('frontend.property_data')
         </div>
     </div>

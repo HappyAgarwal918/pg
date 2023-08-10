@@ -65,29 +65,20 @@ class profileController extends Controller
                 ], 401);
             }
 
-                if (Hash::check($request->current_password, $user->password)) {
-    
-                    $user->password = Hash::make($request->new_password);
-                    $user->save();
+            if (Hash::check($request->current_password, $user->password)) {
 
-                    if($user->save()) {
-                        return response()->json([
-                            'status' => true,
-                            'message' => 'Password updated successfully.',
-                        ], 200);
-                    }
-                } else {
-                    return response()->json([
-                        'status' => false,
-                        'message' => 'Old password is incorrect.',
-                    ], 500);
+                $user->password = Hash::make($request->new_password);
+                $user->save();
+
+                if($user->save()) {
+                    return back()->with('successful_message', 'Password updated successfully.');
                 }
+            } else {
+                return back()->with('error_message', 'Old password is incorrect.');
+            }
             
         } catch (\Throwable $th) {
-            return response()->json([
-                'status' => false,
-                'message' => $th->getMessage()
-            ], 500);
+            return back()->with('error_message', $th->getMessage());
         }
     }
 
@@ -117,12 +108,11 @@ class profileController extends Controller
                             ->update([
                                 'profile_pic'=> 'profilepic/'.$input['imagename'],
                             ]);
+                return back()->with('successful_message','Profile Picture Updated Successfully');
         
         } catch (\Throwable $th) {
             return back()->with('error_message', $th->getMessage());
         }
-
-        return redirect()->route('profile.settings');
     }
 
     public function appfeedback(Request $request)

@@ -14,6 +14,7 @@ use App\Http\Controllers\wishlistController;
 use App\Http\Controllers\propertyController;
 use App\Http\Controllers\Admin\FrontendAdminController;
 use App\Http\Controllers\Admin\UserAdminController;
+use App\Http\Controllers\Admin\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -98,17 +99,6 @@ All Admin Routes List
 Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::group(['prefix' => 'admin'], function () {
         Route::get('/home', [HomeController::class, 'adminHome'])->name('admin.home');
-        Route::controller(UserAdminController::class)->group(function () {
-            Route::get('/broker', 'broker')->name('admin.broker');
-            Route::get('/owner', 'owner')->name('admin.owner');
-            Route::get('/add', 'newuser')->name('admin.newuser');
-            Route::get('/user', 'user')->name('admin.user');
-            Route::get('/edit/{key}', 'edit')->name('admin.edit');
-            Route::get('/destroy/{key}', 'destroy')->name('admin.destroy');
-            Route::post('/update/name', 'update_name')->name('admin.update_name');
-            Route::post('/update/email', 'update_email')->name('admin.update_email');
-        Route::post('/update/password','update_password')->name('admin.update_pass');
-        });
         Route::controller(FrontendAdminController::class)->group(function () {
             Route::get('/frontend/header/footer', 'headerfooter')->name('admin.headerfooter');
             Route::post('/primarymenu', 'primarymenu')->name('admin.primarymenu');
@@ -128,6 +118,8 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
             Route::get('/blog/destroy/{key}', 'destroyblog')->name('admin.destroyblog');
             Route::get('/settings', 'setting')->name('admin.setting');
         });
+        Route::post('/user/{user}/password', [UserController::class, 'password'])->name('user.password');
+        Route::resource('/user', UserController::class);
     });
 });
 

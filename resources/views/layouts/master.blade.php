@@ -58,13 +58,8 @@
 <script src="{{ asset('assets/js/map-script-2.js')}}"></script>
 <!--End Google Map APi-->
 
-@yield('js')
-
-<script src="{{ asset('assets/js/script.js')}}"></script>
-
 <script type="text/javascript">
     function wishlist(id){
-    console.log(id)
         $.ajax({
             url: "{{ route('addtowishlist') }}",
             type: "POST",
@@ -74,6 +69,7 @@
                 Success = true;
                 if($("#wishlist"+id).hasClass("red-heart")){
                     $("#wishlist"+id).removeClass("red-heart");
+
                 }else{
                     $("#wishlist"+id).addClass("red-heart");
                 }
@@ -88,5 +84,8 @@
     }
 </script>
 
+@yield('js')
+
+<script src="{{ asset('assets/js/script.js')}}"></script>
 </body>
 </html>
