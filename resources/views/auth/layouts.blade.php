@@ -5,6 +5,12 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" />
       <style type="text/css">
+
+        @media only screen and (min-width:992px){
+          .hight{
+            height: 100vh;
+          }
+        }
         
           .bg-illustration {
             position: relative;

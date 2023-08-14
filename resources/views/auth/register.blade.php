@@ -1,7 +1,7 @@
 @extends('auth.layouts')
 
 @section('content')
-<div class="row justify-content-center align-items-center" style="height: 100vh;">
+<div class="row justify-content-center align-items-center hight">
     <div class="col-md-8">
         <div class="row mb-3 text-center">
             <span>Account already exist <a href="{{ route('login')}}">Login</a></span>
