@@ -1,7 +1,7 @@
 @extends('auth.layouts')
 
 @section('content')
-<div class="row justify-content-center align-items-center" style="height: 100vh;">
+<div class="row justify-content-center align-items-center hight">
     <div class="col-md-8">
         @if(Session::has('error'))
         <div class="alert alert-danger">
