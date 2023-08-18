@@ -22,8 +22,8 @@
                             @if(isset($frontend['footer']->twitter) && $frontend['footer']->twitter != NULL)
                             <li><a href="{{ $frontend['footer']->twitter }}"><span class="fa fa-twitter"></span></a></li>
                             @endif
-                            @if(isset($frontend['footer']->googleplus) && $frontend['footer']->googleplus != NULL)
-                            <li><a href="{{ $frontend['footer']->googleplus }}"><span class="fa fa-google-plus"></span></a></li>
+                            @if(isset($frontend['footer']->linkedin) && $frontend['footer']->linkedin != NULL)
+                            <li><a href="{{ $frontend['footer']->linkedin }}"><span class="fa fa-linkedin"></span></a></li>
                             @endif
                             @if(isset($frontend['footer']->pinterest) && $frontend['footer']->pinterest != NULL)
                             <li><a href="{{ $frontend['footer']->pinterest }}"><span class="fa fa-pinterest-p"></span></a></li>
@@ -63,7 +63,7 @@
 	<div class="auto-container">
     	<div class="outer-container clearfix">
             <!--Logo Box-->
-            <div class="logo-box">
+            <div class="logo-box d-none d-md-block">
                 <div class="logo">
                     <a href="{{ route('index')}}"><img src="{{ asset($frontend['logo'][0]->path)}}" alt=""></a>
                 </div>
@@ -85,6 +85,7 @@
                     </div>
                 </nav>
                 <!-- Main Menu End-->
+                <a href="{{ route('index')}}" class="d-block d-md-none" style="width: 70px;position: absolute;left: 44%;right: 44%; margin-top: 6px;"><img src="{{ asset($frontend['logo'][0]->path)}}" alt=""></a>
                 
                 <!--Search Box-->
                 <div class="search-box-outer">

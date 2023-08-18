@@ -72,7 +72,7 @@ class FrontendAdminController extends Controller
                     'facebook' => $request->facebook,
                     'twitter' => $request->twitter,
                     'pinterest' => $request->pinterest,
-                    'googleplus' => $request->googleplus,
+                    'linkedin' => $request->linkedin,
                     'dribbble' => $request->dribbble,
                     'instagram' => $request->instagram,
                 ]);

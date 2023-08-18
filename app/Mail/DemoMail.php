@@ -34,8 +34,8 @@ class DemoMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            from: new Address('npolekanchan@gmail.com', 'Kanchan'),
-            subject: 'Mail',
+            from: new Address('info@happitohelp.com', 'Happi To Help'),
+            subject: 'Contact',
         );
     }
 

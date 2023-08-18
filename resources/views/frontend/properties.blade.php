@@ -5,10 +5,18 @@
 
 @section('content')
 <!--Page Title-->
-<section class="py-5" style="background-image:url({{ asset('assets/images/background/6.png')}})">
+<section class="page-title" style="background-image:url({{ asset('assets/images/background/6.png')}})">
     <div class="auto-container">
         <div class="clearfix">
-            @include('frontend.filter')
+            <div class="pull-left">
+                <h1>Properties</h1>
+            </div>
+            <div class="pull-right">
+                <ul class="page-breadcrumb">
+                    <li><a href="{{ route('home')}}">Home</a></li>
+                    <li>Properties</li>
+                </ul>
+            </div>
         </div>
     </div>
 </section>
