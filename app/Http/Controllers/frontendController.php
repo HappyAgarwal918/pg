@@ -10,8 +10,11 @@ use App\Models\User;
 use App\Models\contact;
 use App\Models\properties;
 use App\Models\wishlist;
+use App\Models\mailchimp;
 use Carbon\Carbon;
 use Stevebauman\Location\Facades\Location;
+use Mail;
+use App\Mail\DemoMail; 
 
 class frontendController extends Controller
 {
@@ -49,6 +52,16 @@ class frontendController extends Controller
 
         $data = contact::create($data);
 
+        $mailData = [
+            'name' => $data->name,
+            'email' => $data->email,
+            'subject' => $data->subject,
+            'phone_number' => $data->phone_number,
+            'message' => $data->message,
+        ];
+         
+        Mail::to('info@happitohelp.com')->send(new DemoMail($mailData));
+
         return back()->with('success', 'Form Submitted Successfully');
     }
 
@@ -83,5 +96,14 @@ class frontendController extends Controller
         // echo "<pre>";print_r($currentUserInfo);die;
           
         return view('user', compact('currentUserInfo'));
+    }
+
+    public function mailchimp(Request $request)
+    {
+        $data = $request->except('_token');
+
+        $user = mailchimp::create($data);
+
+        return back();
     }
 }

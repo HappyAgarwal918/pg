@@ -44,7 +44,8 @@ Route::controller(frontendController::class)->group(function () {
     Route::get('privacy', 'privacy')->name('privacy');
     Route::get('terms-and-conditions', 'tandc')->name('tandc');
     Route::get('blogs', 'blogs')->name('blogs');
-    Route::get('gallery', 'gallery')->name('gallery');    
+    Route::get('gallery', 'gallery')->name('gallery');
+    Route::post('mailchimp', 'mailchimp')->name('mailchimp');
 });
 
 Route::controller(propertyController::class)->group(function () {

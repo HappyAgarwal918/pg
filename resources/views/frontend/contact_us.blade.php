@@ -59,7 +59,7 @@
                     </div>
                     
                     <div class="form-group text-center col-md-12 col-sm-12 col-xs-12">
-                        <button type="submit" class="theme-btn btn-style-three">Send Now <span class="icon flaticon-send-message-button"></span></button>
+                        <button type="submit" class="btn-style-three">Send Now <span class="icon flaticon-send-message-button"></span></button>
                     </div>                                        
                 </div>
             </form>

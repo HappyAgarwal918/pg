@@ -7,6 +7,13 @@
 <link href="{{ asset('assets/plugins/revolution/css/settings.css')}}" rel="stylesheet" type="text/css"><!-- REVOLUTION SETTINGS STYLES -->
 <link href="{{ asset('assets/plugins/revolution/css/layers.css')}}" rel="stylesheet" type="text/css"><!-- REVOLUTION LAYERS STYLES -->
 <link href="{{ asset('assets/plugins/revolution/css/navigation.css')}}" rel="stylesheet" type="text/css"><!-- REVOLUTION NAVIGATION STYLES -->
+<style type="text/css">
+    .tp-fullwidth-forcer,
+    #rev_slider_one_wrapper,
+    #rev_slider_one{
+        max-height: 700px !important;
+    }
+</style>
 @endsection
 
 @section('content')
@@ -104,35 +111,35 @@
 <!--End Property Section-->
 
 <!--Testimonial Section-->
-<section class="testimonial-section">
-	<div class="auto-container">
-    	<!--Sec Title-->
-        <div class="sec-title centered">
-            <div class="title">Testimonial</div>
-            <h2>What Client Says</h2>
-            <div class="separator"></div>
-        </div>
-        <div class="two-item-carousel owl-carousel owl-theme">
-            <!--Testimonial Block Three-->
-            @foreach($data['testimonial'] as $testimonial)
-            <div class="testimonial-block-three">
-            	<div class="inner-box">
-                	<div class="text">{{ $testimonial->description }}</div>
-                    <div class="author-info">
-                    	<div class="author-inner">
-                        	<div class="image">
-                            	<img src="{{ asset(''.$testimonial->img_path)}}" alt="" />
-                            </div>
-                            <h3>{{ $testimonial->name }}</h3>
-                            <div class="author-designation">{{ $testimonial->designation }}</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            @endforeach
-        </div>
-    </div>
-</section>
+<!-- <section class="testimonial-section"> -->
+	<!-- <div class="auto-container"> -->
+    	<!-- Sec Title -->
+        <!-- <div class="sec-title centered"> -->
+            <!-- <div class="title">Testimonial</div> -->
+            <!-- <h2>What Client Says</h2> -->
+            <!-- <div class="separator"></div> -->
+        <!-- </div> -->
+        <!-- <div class="two-item-carousel owl-carousel owl-theme"> -->
+            <!-- Testimonial Block Three -->
+            <!-- @foreach($data['testimonial'] as $testimonial) -->
+            <!-- <div class="testimonial-block-three"> -->
+            	<!-- <div class="inner-box"> -->
+                	<!-- <div class="text">{{ $testimonial->description }}</div> -->
+                    <!-- <div class="author-info"> -->
+                    	<!-- <div class="author-inner"> -->
+                        	<!-- <div class="image"> -->
+                            	<!-- <img src="{{ asset(''.$testimonial->img_path)}}" alt="" /> -->
+                            <!-- </div> -->
+                            <!-- <h3>{{ $testimonial->name }}</h3> -->
+                            <!-- <div class="author-designation">{{ $testimonial->designation }}</div> -->
+                        <!-- </div> -->
+                    <!-- </div> -->
+                <!-- </div> -->
+            <!-- </div> -->
+            <!-- @endforeach -->
+        <!-- </div> -->
+    <!-- </div> -->
+<!-- </section> -->
 <!--End Testimonial Section-->
 
 @endsection

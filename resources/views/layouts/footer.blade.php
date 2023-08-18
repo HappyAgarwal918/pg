@@ -7,12 +7,13 @@
                 <!--Logo Column-->
                 <div class="logo-column col-lg-3 col-md-3 col-sm-12 col-xs-12 align-self-end">
                 	<div class="logo">
-                    	<a href="{{ route('index')}}"><img src="{{ asset($frontend['logo'][0]->path)}}" alt="" /></a>
+                    	<a href="{{ route('index')}}"><img src="{{ asset($frontend['logo'][0]->path)}}" alt="" style="max-height:70px " /></a>
                     </div>
                 </div>
                 <!--form Column-->
                 <div class="form-column col-lg-4 col-md-3 col-sm-4 col-xs-12">
-                	<form method="post" action="contact.html">
+                	<form method="post" action="{{ route('mailchimp')}}">
+                        @csrf
                         <div class="form-group clearfix">
                             <input type="email" name="email" value="" placeholder="Enter Your Email" required>
                             <button type="submit" class="theme-btn"><span class="fa fa-send"></span></button>
@@ -28,8 +29,8 @@
                             @if(isset($frontend['footer']->twitter) && $frontend['footer']->twitter != NULL)
                             <li><a href="{{ $frontend['footer']->twitter }}"><span class="fa fa-twitter"></span></a></li>
                             @endif
-                            @if(isset($frontend['footer']->googleplus) && $frontend['footer']->googleplus != NULL)
-                            <li><a href="{{ $frontend['footer']->googleplus }}"><span class="fa fa-google-plus"></span></a></li>
+                            @if(isset($frontend['footer']->linkedin) && $frontend['footer']->linkedin != NULL)
+                            <li><a href="{{ $frontend['footer']->linkedin }}"><span class="fa fa-linkedin"></span></a></li>
                             @endif
                             @if(isset($frontend['footer']->pinterest) && $frontend['footer']->pinterest != NULL)
                             <li><a href="{{ $frontend['footer']->pinterest }}"><span class="fa fa-pinterest-p"></span></a></li>
@@ -55,7 +56,7 @@
 					</div>
                 </div>
                 <!--Footer Column-->
-                <div class="footer-column col-xl-2 col-md-3 col-sm-6 col-xs-12">
+                <!-- <div class="footer-column col-xl-2 col-md-3 col-sm-6 col-xs-12">
                     <div class="footer-widget links-widget">
                     	<h2>Properties</h2>
                         <ul class="links">
@@ -66,9 +67,10 @@
                             <li><a href="#">Laxury Bedroom</a></li>
                         </ul>
                     </div>
-                </div>
+                </div> -->
                 <!--Footer Column-->
-                <div class="footer-column col-xl-2 col-md-3 col-sm-6 col-xs-12">
+                <!-- <div class="footer-column col-xl-2 col-md-3 col-sm-6 col-xs-12"> -->
+                <div class="footer-column col-xl-3 col-md-4 col-sm-12 col-xs-12 offset-md-1 offset-sm-0">
                     <div class="footer-widget links-widget">
                     	<h2>links</h2>
                         <ul class="links">
@@ -100,7 +102,7 @@
     </div>
     <!--Footer Bottom-->
     <div class="footer-bottom">
-    	<div class="copyright">&copy; Copyright 2022 All rights reserved – Design & Developed By Happy Agarwal with <i class="fa fa-heart text-danger"></i></div>
+    	<div class="copyright">&copy; Copyright 2023 All rights reserved – Design & Developed By Happy Agarwal with <i class="fa fa-heart text-danger"></i></div>
     </div>
 </footer>
 <!--End Main Footer-->

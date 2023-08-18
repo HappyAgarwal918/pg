@@ -154,10 +154,10 @@
             </div>
             <div class="timeline-block mb-3">
               <span class="timeline-step">
-                <i class="fa fa-google-plus text-warning text-gradient"></i>
+                <i class="fa fa-linkedin text-info text-gradient"></i>
               </span>
               <div class="timeline-content">
-                <h6 class="text-dark font-weight-bold mb-0 text-truncate">@if($footer->googleplus){{ $footer->googleplus }}@else NULL @endif</h6>
+                <h6 class="text-dark font-weight-bold mb-0 text-truncate">@if($footer->linkedin){{ $footer->linkedin }}@else NULL @endif</h6>
               </div>
             </div>
             <div class="timeline-block">
@@ -293,8 +293,8 @@
                     <input type="text" class="form-control" id="pinterest" name="pinterest" value="{{ $footer->pinterest }}">
                   </div>
                   <div class="mb-3">
-                    <label for="googleplus" class="form-label">Google Plus</label>
-                    <input type="text" class="form-control" id="googleplus" name="googleplus" value="{{ $footer->googleplus }}">
+                    <label for="linkedin" class="form-label">Linkedin</label>
+                    <input type="text" class="form-control" id="linkedin" name="linkedin" value="{{ $footer->linkedin }}">
                   </div>
                   <div class="mb-3">
                     <label for="dribbble" class="form-label">Dribbble</label>
