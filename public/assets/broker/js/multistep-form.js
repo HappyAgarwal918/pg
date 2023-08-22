@@ -73,6 +73,7 @@
     var val = {
         // Specify validation rules
         rules: {
+          name: "required",
           locality: "required",
           full_address: "required",
           room_type: "required",

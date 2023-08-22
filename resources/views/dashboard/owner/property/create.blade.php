@@ -2,16 +2,7 @@
 
 @section('title', 'Add Properties')
 @section('description', 'Properties')
-@section('css')
-<link rel="stylesheet" type="text/css" href="{{asset('assets/broker/css/multistep.css')}}">
-<style type="text/css">
-.room_type{
-    padding: 10px;
-    color: #fff;
-    background-color: #4b49ac;
-}
-</style>
-@endsection
+
 @section('content')
 <div class="row">
   <div class="col-xl-7 grid-margin stretch-card">
@@ -19,7 +10,7 @@
       <div class="card-body">
         <p class="card-title mb-5">Add Properties</p>
         <!-- MultiStep Form -->
-        <form action="{{ route('property.store') }}" method="post" id="multistep_form">
+        <form action="{{ route('property.store') }}" method="post" id="multistep_form" enctype="multipart/form-data">
           @csrf
           <div id="form1" class="tab">
             <div class="panel-body">
@@ -65,7 +56,7 @@
           <div id="form2" class="tab">
             <div class="panel-body">
               <div class="progress">
-                <div class="progress-bar progress-bar-striped color progress-bar-animated" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">50%</div>
+                <div class="progress-bar progress-bar-striped color progress-bar-animated" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
               </div>
               <div class="form-group form_part row">
                 <label for="room_type" class="col-md-3 col-form-label">Types of room</label>
@@ -335,7 +326,7 @@
           <div id="form3" class="tab">
             <div class="panel-body">
               <div class="progress">
-                <div class="progress-bar progress-bar-striped color progress-bar-animated" role="progressbar" style="width: 80%;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">80%</div>
+                <div class="progress-bar progress-bar-striped color progress-bar-animated" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">50%</div>
               </div>
               <div class="form-group form_part row">
                 <label for="food" class="col-md-3 col-form-label">Food Availibility</label>
@@ -370,7 +361,7 @@
           <div id="form4" class="tab">
             <div class="panel-body">
               <div class="progress">
-                <div class="progress-bar progress-bar-striped color progress-bar-animated" role="progressbar" style="width: 80%;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">80%</div>
+                <div class="progress-bar progress-bar-striped color progress-bar-animated" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
               </div>
               <div class="form-group form_part row">
                 <label for="tenant" class="col-md-3 col-form-label">Preferred Tenant</label>
@@ -460,6 +451,40 @@
               </div>
             </div>
           </div>
+          <div id="form5" class="tab">
+            <div class="panel-body">
+              <div class="progress">
+                <div class="progress-bar progress-bar-striped color progress-bar-animated" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
+              </div>
+              <div class="form-group form_part row">
+                <label for="upload" class="col-md-3 col-form-label">Excerpt Images<br>Upload Size : <strong>(800px x 400px)</strong></label>
+                <div class="col-md-8">
+                  <div class="drop-zone">
+                    <span class="drop-zone__prompt">Drop file here or click to upload</span>
+                    <input type="file" name="excerpt_img" class="drop-zone__input">
+                  </div>
+                </div>
+              </div>
+              <div class="form-group form_part row">
+                <label for="upload" class="col-md-3 col-form-label">Property Images<br>Upload Size : <strong>(800px x 400px)</strong></label>
+                <div class="col-md-8">
+                    <div class="upload upload">
+                      <div class="upload__wrap">
+                        <div class="upload__btn">
+                          <input class="upload__input" type="file" name="upload[]" id="upload" multiple="multiple" data-max-count="8" accept="image/*"/>
+                        </div>
+                      </div>
+                      <div class="upload__mess">
+                        <p class="count_img hidden_ms">Maximum Upload Property: <strong class="count_img_var">8</strong></p>
+                        <p class="size_img hidden_ms">Maximum size: <strong class="size_img_var">5 Mb</strong></p>
+                        <p class="file_types hidden_ms">File Format: <strong class="file_types_var">jpg, png</strong></p>
+                      </div>
+                    </div>
+                <label id="upload-error" class="error" for="upload"></label>
+                </div>
+              </div>
+            </div>
+          </div>
           <div style="overflow:auto;">
             <div>
                 <button type="button" name="previous" class="previous btn btn-light">Previous</button>
@@ -479,29 +504,9 @@
 @section('js')
 <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.min.js"></script>
 <script src="{{asset('assets/broker/js/multistep-form.js')}}"></script>
-<script src="{{asset('assets/broker/js/multiselect.js')}}"></script>
-<script>
-    pureScriptSelect('#multiSelect');
-</script>
-<script type="text/javascript" src="https://maps.google.com/maps/api/js?key={{ env('GOOGLE_MAP_KEY') }}&libraries=places" ></script>
-<script>
-    window.addEventListener('load', initialize);
-
-    function initialize() {
-        var input = document.getElementById('autocomplete');
-        var autocomplete = new google.maps.places.Autocomplete(input);
-
-        autocomplete.addListener('place_changed', function () {
-            var place = autocomplete.getPlace();
-            $('#latitude').val(place.geometry['location'].lat());
-            $('#longitude').val(place.geometry['location'].lng());
-        });
-    }
-</script>
 <script> 
     $(window).ready(function() {
     $("#multistep_form").on("keypress", function (event) {
-        console.log("aaya");
         var keyPressed = event.keyCode || event.which;
         if (keyPressed === 13) {
             // alert("You pressed the Enter key!!");
@@ -510,5 +515,6 @@
         }
     });
     });
-</script> 
+</script>
+
 @endsection 

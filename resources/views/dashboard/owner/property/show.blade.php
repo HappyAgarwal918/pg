@@ -155,14 +155,21 @@
                 <div class="col-md-3"><label class="form-label">Description:</label></div>
                 <div class="col-md-9"><p>{{ $property->description}}</p></div>
             </div>
-            <!-- <div class="row mb-3 border-bottom">
-                <div class="col-md-3"><label class="form-label">Aadhar:</label></div>
-                <div class="col-md-9"><a class="image-link" href=""><img src="" width="100"></a>&emsp;<a><img src="" width="100"></a><p></p></div>
+            <div class="row mb-3 border-bottom">
+                <div class="col-md-3"><label class="form-label">Excerpt Image:</label></div>
+                <div class="col-md-9"><a class="image-link" href=""><img src="{{ asset($property['propertyimg']['0']->img_src) }}" width="100"></a>&emsp;<a><img src="" width="100"></a></div>
             </div>
             <div class="row mb-3 border-bottom">
-                <div class="col-md-3"><label class="form-label">Signature:</label></div>
-                <div class="col-md-9"><img src="" width="100"><p></p></div>
-            </div> -->
+                <div class="col-md-3"><label class="form-label">Images:</label></div>
+                <div class="col-md-9">
+                    @foreach($property['image'] as $images)
+                    <img src="{{ asset($images->img_src) }}" width="100" class="mr-3">
+                    @endforeach
+                </div>
+            </div>
+            <div class="badge badge-success badge-success-alt white-sp-normal px-3">
+                <a href="{{ route('property.edit', encrypt($property->id)) }}">Edit</a>
+            </div>
         </div><!--//app-card-body-->
     </div><!--//app-card-->
             </div>

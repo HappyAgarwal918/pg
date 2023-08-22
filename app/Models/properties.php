@@ -61,6 +61,11 @@ class properties extends Model
 
     public function wishlistproperty()
     {
-        return $this->hasMany(savedProperties::class);
+        return $this->hasMany(wishlist::class);
+    }
+
+    public function propertyimg()
+    {
+        return $this->hasMany(propertyImg::class, 'property_id');
     }
 }

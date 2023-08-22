@@ -543,6 +543,11 @@
 		position: absolute;
 		margin-left: 0px;
 		margin-top:20px;
+		border-left: none;
+	}
+
+	.main-header .nav-outer .new-wishlist{
+		right:5%;
 	}
 	
 	.main-header .nav-outer .search-box-outer .dropdown-menu{
@@ -621,7 +626,8 @@
 	
 	.main-header .search-box-btn{
 		text-align:left;
-		border:0px;	
+		border:0px;
+		margin-left: 0px;
 	}
 	
 	.main-slider h2.alternate{
@@ -1011,6 +1017,10 @@
 	
 	.testimonial-section-two .owl-carousel .owl-stage-outer{
 		padding-top:0px;
+	}
+
+	.main-header .nav-outer .new-wishlist {
+	    right: 10%;
 	}
 	
 }

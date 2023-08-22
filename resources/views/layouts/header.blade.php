@@ -88,6 +88,9 @@
                 <a href="{{ route('index')}}" class="d-block d-md-none" style="width: 70px;position: absolute;left: 44%;right: 44%; margin-top: 6px;"><img src="{{ asset($frontend['logo'][0]->path)}}" alt=""></a>
                 
                 <!--Search Box-->
+                <div class="search-box-outer new-wishlist">
+                    <a class="search-box-btn dropdown-toggle" type="button" href="{{ route('savedproperty')}}"><span class="fa fa-heart-o text-light"></span></a>
+                </div>
                 <div class="search-box-outer">
                     <div class="dropdown">
                         <button class="search-box-btn dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false"><span class="fa fa-search"></span></button>

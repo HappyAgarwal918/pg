@@ -18,7 +18,7 @@
 	    <div class="card">
 	      	<div class="card-body">
 	      		<p class="card-title">Edit Properties</p>
-	      		<form action="{{ route('property.update', encrypt($data->id))}}" method="POST">
+	      		<form action="{{ route('property.update', encrypt($data->id))}}" method="POST" enctype="multipart/form-data">
 				  <input name="_method" type="hidden" value="PUT">
           		@csrf
 	          		<div class="form-group form_part row">
@@ -424,10 +424,49 @@
 	                		<label id="description-error" class="error" for="description"></label>
 	                	</div>
 	              	</div>
+	              	<div class="form-group form_part row">
+		                <label for="upload" class="col-md-3 col-form-label">Excerpt Images<br>Upload Size : <strong>(800px x 400px)</strong></label>
+		                <div class="col-md-8">
+		                	<div class="row">
+		                		<div class="col-md-6">
+		                			<img src="{{ asset($data['propertyimg']['0']->img_src)}}" width="100">
+		                		</div>
+		                		<div class="col-md-6">
+		                			<div class="drop-zone">
+					                    <span class="drop-zone__prompt">Drop file here or click to change</span>
+					                    <input type="file" name="excerpt_img" class="drop-zone__input">
+					                 </div>
+		                		</div>
+		                	</div>
+		                </div>
+		            </div>
 		            <div><button type="submit" name="submit" class="btn btn-primary">Submit</button></div>
 	            </form>
 	      	</div>
 	  	</div>
+	</div>
+	<div class="col-md-4 grid-margin">
+		<div class="card">
+			<div class="card-body">
+				<div class="wrap">
+					<p class="card-title">File upload multiple</p>
+					<form action="#" method="get" name="form" enctype="multipart/form-data">
+					    <div class="upload upload">
+					      <div class="upload__wrap">
+					        <div class="upload__btn">
+					          <input class="upload__input" type="file" name="upload[]" multiple="multiple" data-max-count="8" accept="image/*"/>
+					        </div>
+					      </div>
+					      <div class="upload__mess">
+					        <p class="count_img hidden_ms">Maximum Upload Property: <strong class="count_img_var">8</strong></p>
+					        <p class="size_img hidden_ms">Maximum size: <strong class="size_img_var">5 Mb</strong></p>
+					        <p class="file_types hidden_ms">File Format: <strong class="file_types_var">jpg, png</strong></p>
+					      </div>
+					    </div>
+					</form>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
 @endsection

@@ -18,6 +18,15 @@
   <!-- endinject -->
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/jszip-2.5.0/dt-1.13.1/b-2.3.3/b-colvis-2.3.3/b-html5-2.3.3/r-2.4.0/datatables.min.css"/>
   <link rel="stylesheet" href="{{ asset('assets/broker/css/style.css')}}">
+  <link rel="stylesheet" type="text/css" href="{{asset('assets/broker/css/multistep.css')}}">
+  <link rel="stylesheet" type="text/css" href="{{asset('assets/broker/css/file_upload.css')}}">
+  <style type="text/css">
+  .room_type{
+      padding: 10px;
+      color: #fff;
+      background-color: #4b49ac;
+  }
+  </style>
   @yield('css')
 </head>
 <body>
@@ -36,6 +45,16 @@
 
       <div class="main-panel">
         <div class="content-wrapper">
+
+          @if(Session::has('successful_message'))
+          <div class="alert alert-success alert-dismissible">
+          {{ Session::get('successful_message') }}
+          </div>
+          @elseif(Session::has('error_message'))
+          <div class="alert alert-danger alert-dismissible">
+          {{ Session::get('error_message') }}
+          </div>
+          @endif
 
           @yield('content')
 
@@ -93,4 +112,20 @@
 
 @yield('js')
 
+<script type="text/javascript" src="https://maps.google.com/maps/api/js?key={{ env('GOOGLE_MAP_KEY') }}&libraries=places" ></script>
+<script>
+    window.addEventListener('load', initialize);
+
+    function initialize() {
+        var input = document.getElementById('autocomplete');
+        var autocomplete = new google.maps.places.Autocomplete(input);
+
+        autocomplete.addListener('place_changed', function () {
+            var place = autocomplete.getPlace();
+            $('#latitude').val(place.geometry['location'].lat());
+            $('#longitude').val(place.geometry['location'].lng());
+        });
+    }
+</script>
+<script src="{{asset('assets/broker/js/file_upload.js')}}"></script>
 </html>
