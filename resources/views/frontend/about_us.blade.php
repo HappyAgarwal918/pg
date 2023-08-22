@@ -54,7 +54,7 @@
             <!--Image Column-->
             <div class="image-column col-md-6 col-sm-12 col-xs-12">
             	<div class="image">
-                	<img src="{{ asset('assets/images/resource/about.jpg')}}" alt="" />
+                	<img src="{{ asset('assets/images/resource/about-new.jpg')}}" alt="" />
                 </div>
             </div>
             

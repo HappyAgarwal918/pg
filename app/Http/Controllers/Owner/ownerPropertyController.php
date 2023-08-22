@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\properties;
 use Mail;
 use App\Mail\DemoMail;
+use App\Models\propertyImg;
 
 class ownerPropertyController extends Controller
 {
@@ -17,7 +18,11 @@ class ownerPropertyController extends Controller
      */
     public function index()
     {
-        $data = properties::where('user_id', Auth()->user()->id)->get();
+        $data = properties::where('user_id', Auth()->user()->id)->with([
+            'propertyimg' => function ($query) {
+                $query->where('excerpt', '1');
+             }
+        ])->get();
 
         return view('dashboard.owner.property.index', compact('data'));
     }
@@ -94,10 +99,38 @@ class ownerPropertyController extends Controller
         }
 
         $data['user_id'] = Auth()->user()->id;
-        
-        // echo "<pre>";print_r($data);die;
 
         $user = properties::create($data);
+
+        if($user){
+            $excerpt_img = $request->file('excerpt_img');
+            $input['imagename'] = time().'.'.$excerpt_img->extension();
+
+            $destinationPath = public_path('property_img');
+            $excerpt_img->move($destinationPath, $input['imagename']);
+
+            $imgdata = propertyImg::create([
+                'name'=> $input['imagename'],
+                'img_src'=> 'property_img/'.$input['imagename'],
+                'excerpt'=> '1',
+                'property_id'=> $user['id'],
+            ]);
+
+            $upload = [];
+            foreach ($request->file('upload') as $propertyimg) {
+                $input['images'] = time().rand(1,99).'.'.$propertyimg->extension();
+                $propertyimg->move($destinationPath, $input['images']);
+
+                $upload[]['name'] = $input['images'];
+
+                $img = propertyImg::create([
+                    'name'=> $input['images'],
+                    'img_src'=> 'property_img/'.$input['images'],
+                    'property_id'=> $user['id'],
+                ]);
+            }
+                 
+        }
 
         // if($user){
 
@@ -109,7 +142,7 @@ class ownerPropertyController extends Controller
         //     Mail::to(Auth()->user()->email)->cc('happyagarwal918@gmail.com')->send(new DemoMail($mailData));
         // }
 
-        return back()->with('successful_message', 'Property created successfully');
+        return redirect('property.index')->with('successful_message', 'Property created successfully');
     }
 
     /**
@@ -122,11 +155,14 @@ class ownerPropertyController extends Controller
     {
         $pid = decrypt($id);
 
-        $property = properties::where('id', $pid)->first();
+        $property = properties::where('id', $pid)->with([
+            'propertyimg' => function ($query) {
+                $query->where('excerpt', '1');
+             }
+        ])->first();
         $property['room_type'] = explode(', ', $property->room_type);
         $property['amenities'] = explode(', ', $property->amenities);
-
-        // echo "<pre>";print_r($property);die; 
+        $property['image'] = propertyImg::where('property_id', $pid)->where('excerpt', 0)->get();
 
         return view('dashboard.owner.property.show', compact('property'));
     }
@@ -140,9 +176,14 @@ class ownerPropertyController extends Controller
     public function edit($id)
     {
         $pid = decrypt($id);
-        $data = properties::where('id', $pid)->first();
-        $data['room_type'] = explode(", ", $data->room_type);
-        $data['amenities'] = explode(", ", $data->amenities);
+        $data = properties::where('id', $pid)->with([
+            'propertyimg' => function ($query) {
+                $query->where('excerpt', '1');
+             }
+        ])->first();
+        $data['room_type'] = explode(', ', $data->room_type);
+        $data['amenities'] = explode(', ', $data->amenities);
+        $data['image'] = propertyImg::where('property_id', $pid)->where('excerpt', 0)->get();
 
         return view('dashboard.owner.property.edit', compact('data'));
     }
@@ -160,7 +201,7 @@ class ownerPropertyController extends Controller
 
         $property = properties::where('id', $pid);
 
-        $data = $request->except(['_token', '_method','submit']);
+        $data = $request->except(['_token', '_method','excerpt_img','submit']);
 
         if(!in_array('single', $data['room_type'])){
             $data['sb_room_count'] = NULL;
@@ -214,10 +255,23 @@ class ownerPropertyController extends Controller
 
         $data['user_id'] = Auth()->user()->id;
 
-        // echo "<pre>";print_r($data);die;
 
         $property->update($data);
 
+        if($request->file('excerpt_img')){
+            $excerpt_img = $request->file('excerpt_img');
+            $input['imagename'] = time().'.'.$excerpt_img->extension();
+
+            $destinationPath = public_path('property_img');
+            $excerpt_img->move($destinationPath, $input['imagename']);
+
+            $imgdata = propertyImg::where('property_id', $pid)
+            ->where('excerpt', '1')
+            ->update([
+                'name'=> $input['imagename'],
+                'img_src'=> 'property_img/'.$input['imagename'],
+            ]);
+        }
 
         return redirect()->route('property.index');
     }

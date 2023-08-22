@@ -18,7 +18,7 @@
 	    <div class="card">
 	      	<div class="card-body">
 	      		<p class="card-title">Edit Properties</p>
-	      		<form action="{{ route('broker.update',encrypt($data->id))}}" method="POST">
+	      		<form action="{{ route('broker.update',encrypt($data->id))}}" method="POST" enctype="multipart/form-data">
                   <input name="_method" type="hidden" value="PUT">
           		@csrf
 	          		<div class="form-group form_part row">
@@ -424,6 +424,22 @@
 	                		<label id="description-error" class="error" for="description"></label>
 	                	</div>
 	              	</div>
+	              	<div class="form-group form_part row">
+		                <label for="upload" class="col-md-3 col-form-label">Excerpt Images<br>Upload Size : <strong>(800px x 400px)</strong></label>
+		                <div class="col-md-8">
+		                	<div class="row">
+		                		<div class="col-md-6">
+		                			<img src="{{ asset($data['propertyimg']['0']->img_src)}}" width="100">
+		                		</div>
+		                		<div class="col-md-6">
+		                			<div class="drop-zone">
+					                    <span class="drop-zone__prompt">Drop file here or click to change</span>
+					                    <input type="file" name="excerpt_img" class="drop-zone__input">
+					                 </div>
+		                		</div>
+		                	</div>
+		                </div>
+		            </div>
 		            <div><button type="submit" name="submit" class="btn btn-primary">Submit</button></div>
 	            </form>
 	      	</div>
