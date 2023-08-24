@@ -1,14 +1,14 @@
 @extends('layouts.master')
 
-@section('title', 'Privacy Policy - HappitoHelp.com')
+@section('title', 'Privacy Policy - {{ env("APP_URL")}}')
 @section('description', 'Shina Real Estate HTML Template')
 
 @section('content')
 <div class="container my-5">
-	<h1>Privacy Policy for Renting Home Site <b>HappitoHelp.com</b></h1>
+	<h1>Privacy Policy for Renting Home Site <b>{{ env('APP_URL')}}</b></h1>
     <p>Last Updated: 18-August-2023</p>
     
-    <p>At <strong>HappitoHelp.com</strong>, we are committed to safeguarding your privacy and protecting your personal information. This Privacy Policy outlines how we collect, use, disclose, and protect your information when you use our platform to rent home sites. By accessing or using our services, you agree to the terms outlined in this policy.</p>
+    <p>At <strong>{{ env('APP_URL')}}</strong>, we are committed to safeguarding your privacy and protecting your personal information. This Privacy Policy outlines how we collect, use, disclose, and protect your information when you use our platform to rent home sites. By accessing or using our services, you agree to the terms outlined in this policy.</p>
 
     <h2>1. Information We Collect:</h2>
     <p>We may collect the following types of information:</p>
@@ -73,7 +73,7 @@
     <h2>10. Contact Us:</h2>
     <p>If you have any questions, concerns, or requests regarding this Privacy Policy or your personal information, please contact us at <a href="tel:{{$frontend['footer']->phone}}">{{$frontend['footer']->phone}}</a> / <a href="mailto:{{$frontend['footer']->email}}">{{$frontend['footer']->email}}</a>.</p>
 
-    <p>By using HappitoHelp.com, you acknowledge that you have read and understood this Privacy Policy and agree to its terms.</p>
+    <p>By using {{ env('APP_URL')}}, you acknowledge that you have read and understood this Privacy Policy and agree to its terms.</p>
 
 </div>
 

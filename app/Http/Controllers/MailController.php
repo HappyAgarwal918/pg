@@ -16,11 +16,11 @@ class MailController extends Controller
     public function index()
     {
         $mailData = [
-            'title' => 'Mail from Paying Guest',
+            'title' => 'Mail from '.env('APP_NAME'),
             'body' => 'This is for testing email using smtp.'
         ];
          
-        Mail::to('happyagarwal918@gmail.com')->send(new DemoMail($mailData));
+        Mail::to('happitohelp001@gmail.com')->send(new DemoMail($mailData));
            
         dd("Email is sent successfully.");
     }

@@ -10,15 +10,15 @@ use Auth;
 
 class vendorFeedbackController extends Controller
 {
-    
-
     public function usersfeedback()
     {
         $id = Auth::user()->id;
 
         $data = vendorfeedback::where('vendor_id', $id)->with('feedbackuser')->get();
 
-        return view('dashboard.feedback', compact('data'));
+        $rating = $data->avg('rating');
+
+        return view('dashboard.feedback', compact('data', 'rating'));
     }
 
     public function vendorreview(Request $request)

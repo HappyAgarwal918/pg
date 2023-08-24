@@ -449,8 +449,15 @@
 		<div class="card">
 			<div class="card-body">
 				<div class="wrap">
-					<p class="card-title">File upload multiple</p>
-					<form action="#" method="get" name="form" enctype="multipart/form-data">
+					@foreach($data['image'] as $propertyimg)
+					<div class="row mb-3" id="imgdelete{{$propertyimg->id+785}}">
+						<div class="col-md-8"><img src="{{ asset($propertyimg->img_src)}}" width="200"></div>
+						<div class="col-md-4"><a class="btn btn-danger" onclick="deleteimg({{$propertyimg->id+785}})">delete</a></div>
+					</div>
+					@endforeach
+					<p class="card-title">Add New Images</p>
+					<form action="{{ route('upload.propertyimg',$data->id)}}" method="POST" name="form" enctype="multipart/form-data">
+						@csrf
 					    <div class="upload upload">
 					      <div class="upload__wrap">
 					        <div class="upload__btn">
@@ -463,6 +470,7 @@
 					        <p class="file_types hidden_ms">File Format: <strong class="file_types_var">jpg, png</strong></p>
 					      </div>
 					    </div>
+					    <button class="btn btn-primary mt-3" type="submit">Upload</button>
 					</form>
 				</div>
 			</div>

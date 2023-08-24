@@ -123,10 +123,10 @@
     position: absolute;
     background: #71b100;
     color: #ffffff;
-    left: 32px;
+    left: 24px;
     width: 44px;
     height: 24px;
-    bottom:-12px;
+    top: 45%;
     line-height: 26px;
     text-align: center;
     display: inline-block;

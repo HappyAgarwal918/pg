@@ -6,7 +6,7 @@
 @section('content')
 
 <!--Page Title-->
-<section class="page-title" style="background-image:url({{ asset('assets/images/background/5.jpg')}})">
+<section class="page-title" style="background-image:url({{ asset('assets/images/background/6.png')}})">
     <div class="auto-container">
         <div class="clearfix">
             <div class="pull-left">
@@ -14,7 +14,7 @@
             </div>
             <div class="pull-right">
                 <ul class="page-breadcrumb">
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="{{ route('index')}}">Home</a></li>
                     <li>{{ $data->type }} detail</li>
                 </ul>
             </div>
@@ -28,76 +28,61 @@
     <div class="auto-container">
         <div class="row clearfix">
             <!--Content Column-->
-            <div class="content-column col-md-9 col-sm-12 col-xs-12">
+            <div class="content-column col-md-3 col-sm-12 col-xs-12">
                 <div class="inner-column">
                     <h2>{{ $data->first_name }}</h2>
-                    <div class="title">(Real Estate Group)</div>
-                    <div class="text">
-                        <p>Jone Michal is a Certified Residential Specialist with over 10 years experience of helping local resients sell homes. He achieved success due to his commitment to the enhancement.</p>
-                        <p>The process of content marketing entails selecting and delivering useful information to customers to establish credibility. Surprisingly, this general description and other content marketing practices can also be applied to the work of a real estate agent. Content marketing is a multi-step process, </p>
+                    <!-- <div class="title">(Real Estate Group)</div> -->
+                    <div class="image">
+                        @if($data->profile_pic != NULL)
+                        <div class="vendor-img" 
+                            style="background-image:url({{ asset($data->profile_pic) }});"></div>
+                        @else
+                        <img src="{{ asset('profilepic/default.jpg')}}" alt="" />
+                        @endif
                     </div>
+                    <ul class="list-style-two ms-3 mt-3">
+                        <li><span class="icon fa fa-phone"></span>Call us {{ $data->mobile }}</li>
+                        <li><span class="icon fa fa-envelope"></span>{{ $data->email }}</li>
+                        <li>
+                            @foreach(range(1,5) as $i)
+                            <span class="fa-stack" style="width:1em">
+                                <i class="fa fa-star-o fa-stack-1x"></i>
+                                @if($rating >0)
+                                    @if($rating >0.5)
+                                        <i class="fa fa-star fa-stack-1x"></i>
+                                    @else
+                                        <i class="fa fa-star-half fa-stack-1x text-start"></i>
+                                    @endif
+                                @endif
+                                @php $rating--; @endphp
+                            </span>
+                            @endforeach
+                        </li>
+                    </ul>
                 </div>
             </div>
+            <div class="col-md-3 col-sm-12 col-xs-12"></div>
             <!--Image Column-->
-            <div class="image-column col-md-3 col-sm-12 col-xs-12">
-                <div class="image">
-                    @if($data->profile_pic != NULL)
-                    <div class="vendor-img" 
-                        style="background-image:url({{ asset($data->profile_pic) }});"></div>
-                    @else
-                    <img src="{{ asset('profilepic/default.jpg')}}" alt="" />
-                    @endif
-                </div>
-                <ul class="list-style-two ms-3 mt-3">
-                    <li><span class="icon fa fa-phone"></span>Call us {{ $data->mobile }}</li>
-                    <li><span class="icon fa fa-envelope"></span>{{ $data->email }}</li>
-                </ul>
-            </div>
-            
-        </div>
-    </div>
-</section>
-<!--End Single Team Section-->
-
-<!--Property Section-->
-<section class="property-section light-grey-bg">
-	<div class="auto-container">
-    	<!--Sec Title-->
-        <div class="sec-title centered">
-        	<div class="title">Our Featured Properties For Rent</div>
-            <h2>Properties For Rent</h2>
-            <div class="separator"></div>
-            <div class="position-absolute end-0">@include('frontend.sort')</div>
-        </div>
-        <div class="row clearfix" id="property">
-            @include('frontend.property_data')
-        </div>
-    </div>
-</section>
-
-<section class="property-section">
-	<div class="auto-container">
-    <div class="row">
-        <div class="col-md-6 grid-margin stretch-card">
-            <div class="card">
-                <div class="card-body">
-                <h4 class="card-title">Rating & Review</h4>
-                <form action="{{ route('vendor.review')}}" method="POST">
-                    @csrf
-                    <div class="form-group">
-                    <div class="rating">
-        <input type="radio" name="rating" id="rating-5" value="5">
-        <label for="rating-5"></label>
-        <input type="radio" name="rating" id="rating-4" value="4">
-        <label for="rating-4"></label>
-        <input type="radio" name="rating" id="rating-3" value="3">
-        <label for="rating-3"></label>
-        <input type="radio" name="rating" id="rating-2" value="2">
-        <label for="rating-2"></label>
-        <input type="radio" name="rating" id="rating-1" value="1">
-        <label for="rating-1"></label>
-        <div class="emoji-wrapper">
-            <div class="emoji">
+            <div class="image-column col-md-6 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Rating & Review</h4>
+<form action="{{ route('vendor.review')}}" method="POST">
+    @csrf
+    <div class="form-group">
+        <div class="rating">
+            <input type="radio" name="rating" id="rating-5" value="5">
+            <label for="rating-5"></label>
+            <input type="radio" name="rating" id="rating-4" value="4">
+            <label for="rating-4"></label>
+            <input type="radio" name="rating" id="rating-3" value="3">
+            <label for="rating-3"></label>
+            <input type="radio" name="rating" id="rating-2" value="2">
+            <label for="rating-2"></label>
+            <input type="radio" name="rating" id="rating-1" value="1">
+            <label for="rating-1"></label>
+            <div class="emoji-wrapper">
+                <div class="emoji">
             <svg class="rating-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
             <circle cx="256" cy="256" r="256" fill="#ffd93b"/>
             <path d="M512 256c0 141.44-114.64 256-256 256-80.48 0-152.32-37.12-199.28-95.28 43.92 35.52 99.84 56.72 160.72 56.72 141.36 0 256-114.56 256-256 0-60.88-21.2-116.8-56.72-160.72C474.8 103.68 512 175.52 512 256z" fill="#f4c534"/>
@@ -136,21 +121,21 @@
             <ellipse transform="rotate(-135 182.1 246.7)" cx="182.1" cy="246.7" rx="10" ry="6.5" fill="#fff"/>
             </svg>
             <svg class="rating-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-        <circle cx="256" cy="256" r="256" fill="#ffd93b"/>
-        <path d="M407.7 352.8a163.9 163.9 0 0 1-303.5 0c-2.3-5.5 1.5-12 7.5-13.2a780.8 780.8 0 0 1 288.4 0c6 1.2 9.9 7.7 7.6 13.2z" fill="#3e4347"/>
-        <path d="M512 256A256 256 0 0 1 56.7 416.7a256 256 0 0 0 360-360c58.1 47 95.3 118.8 95.3 199.3z" fill="#f4c534"/>
-        <g fill="#fff">
-        <path d="M115.3 339c18.2 29.6 75.1 32.8 143.1 32.8 67.1 0 124.2-3.2 143.2-31.6l-1.5-.6a780.6 780.6 0 0 0-284.8-.6z"/>
-        <ellipse cx="356.4" cy="205.3" rx="81.1" ry="81"/>
-        </g>
-        <ellipse cx="356.4" cy="205.3" rx="44.2" ry="44.2" fill="#3e4347"/>
-        <g fill="#fff">
-        <ellipse transform="scale(-1) rotate(45 454 -906)" cx="375.3" cy="188.1" rx="12" ry="8.1"/>
-        <ellipse cx="155.6" cy="205.3" rx="81.1" ry="81"/>
-        </g>
-        <ellipse cx="155.6" cy="205.3" rx="44.2" ry="44.2" fill="#3e4347"/>
-        <ellipse transform="scale(-1) rotate(45 454 -421.3)" cx="174.5" cy="188" rx="12" ry="8.1" fill="#fff"/>
-    </svg>
+            <circle cx="256" cy="256" r="256" fill="#ffd93b"/>
+            <path d="M407.7 352.8a163.9 163.9 0 0 1-303.5 0c-2.3-5.5 1.5-12 7.5-13.2a780.8 780.8 0 0 1 288.4 0c6 1.2 9.9 7.7 7.6 13.2z" fill="#3e4347"/>
+            <path d="M512 256A256 256 0 0 1 56.7 416.7a256 256 0 0 0 360-360c58.1 47 95.3 118.8 95.3 199.3z" fill="#f4c534"/>
+            <g fill="#fff">
+            <path d="M115.3 339c18.2 29.6 75.1 32.8 143.1 32.8 67.1 0 124.2-3.2 143.2-31.6l-1.5-.6a780.6 780.6 0 0 0-284.8-.6z"/>
+            <ellipse cx="356.4" cy="205.3" rx="81.1" ry="81"/>
+            </g>
+            <ellipse cx="356.4" cy="205.3" rx="44.2" ry="44.2" fill="#3e4347"/>
+            <g fill="#fff">
+            <ellipse transform="scale(-1) rotate(45 454 -906)" cx="375.3" cy="188.1" rx="12" ry="8.1"/>
+            <ellipse cx="155.6" cy="205.3" rx="81.1" ry="81"/>
+            </g>
+            <ellipse cx="155.6" cy="205.3" rx="44.2" ry="44.2" fill="#3e4347"/>
+            <ellipse transform="scale(-1) rotate(45 454 -421.3)" cx="174.5" cy="188" rx="12" ry="8.1" fill="#fff"/>
+            </svg>
             <svg class="rating-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
             <circle cx="256" cy="256" r="256" fill="#ffd93b"/>
             <path d="M512 256A256 256 0 0 1 56.7 416.7a256 256 0 0 0 360-360c58.1 47 95.3 118.8 95.3 199.3z" fill="#f4c534"/>
@@ -181,26 +166,52 @@
             <path d="M256 476.2a70 70 0 0 0 53.3-25.5 34.6 34.6 0 0 0-58-25 34.4 34.4 0 0 0-47.8 26 69.9 69.9 0 0 0 52.6 24.5z" fill="#e24b4b"/>
             <path d="M290.3 434.8c-1 3.4-5.8 5.2-11 3.9s-8.4-5.1-7.4-8.7c.8-3.3 5.7-5 10.7-3.8 5.1 1.4 8.5 5.3 7.7 8.6z" fill="#fff" opacity=".2"/>
             </svg>
+                </div>
             </div>
-        </div>
         </div>
     </div>
     <div class="form-group">
         <input class="form-control d-none" name="vendor_id" value="{{ $data->id }}" />
     </div>
-        <div class="form-group">
-            <label for="feedback">How was your experience</label>
-                <textarea class="form-control" id="feedback" name="feedback" rows="10" placeholder="Write your feedback here"></textarea>
+    <div class="form-group">
+        <label for="feedback">How was your experience</label>
+        <textarea class="form-control" id="feedback" name="feedback" rows="4" placeholder="Write your feedback here"></textarea>
+    </div>
+    <button type="submit" class="col-md-12 btn btn-primary mt-5">Submit Feedback</button>
+</form>
                     </div>
-                    <button type="submit" class="col-md-12 btn btn-primary mt-5">Submit Feedback</button>
-                </form>
+                </div>
             </div>
-            </div>
+        </div>
+    </div>
+</section>
+<!--End Single Team Section-->
+
+<!--Property Section-->
+<section class="property-section light-grey-bg">
+	<div class="auto-container">
+    	<!--Sec Title-->
+        <div class="sec-title centered">
+        	<div class="title">{{ $data->username }} Properties For Rent</div>
+            <h2>Properties For Rent</h2>
+            <div class="separator"></div>
+            <div class="position-absolute end-0">@include('frontend.sort')</div>
+        </div>
+        <div class="row clearfix" id="property">
+            @include('frontend.property_data')
+        </div>
+    </div>
+</section>
+
+<!-- <section class="property-section">
+	<div class="auto-container">
+    <div class="row">
+        <div class="col-md-6 grid-margin stretch-card">
+            
         </div>
         <div class="col-md-6"></div>
     </div>
-    <!--End Property Section-->
 </div>
-</section>
+</section> -->
 
 @endsection

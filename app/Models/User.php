@@ -76,4 +76,9 @@ class User extends Authenticatable
         return $this->hasMany(feedback::class);
     }
 
+    public function vendorfeedback()
+    {
+        return $this->hasMany(vendorfeedback::class, 'vendor_id');
+    }
+
 }

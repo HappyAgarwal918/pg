@@ -37,10 +37,6 @@
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
 
-
-
-      @include('dashboard.layouts.settingpanel')
-
       @include('dashboard.layouts.sidebar')
 
       <div class="main-panel">
@@ -76,15 +72,8 @@
 <script src="{{ asset('assets/broker/js/off-canvas.js')}}"></script>
 <script src="{{ asset('assets/broker/js/hoverable-collapse.js')}}"></script>
 <script src="{{ asset('assets/broker/js/template.js')}}"></script>
-<script src="{{ asset('assets/broker/js/settings.js')}}"></script>
-<!-- <script src="{{ asset('assets/broker/js/todolist.js')}}"></script> -->
-<!-- endinject -->
 <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/jszip-2.5.0/dt-1.13.1/b-2.3.3/b-colvis-2.3.3/b-html5-2.3.3/r-2.4.0/datatables.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
-<script>
 
-</script>
 <script>
   $(function () {
   $('#example').dataTable({
@@ -97,10 +86,6 @@
       {
         extend: 'excel',
         text: 'Excel <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>'
-      },
-      {
-        extend: 'pdf',
-        text: 'PDF <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>'
       },
       'copy',
       'colvis'
@@ -128,4 +113,21 @@
     }
 </script>
 <script src="{{asset('assets/broker/js/file_upload.js')}}"></script>
+<script type="text/javascript">
+  function deleteimg(id){        
+    $.ajax({
+        url: "{{ route('delete.propertyimg') }}",
+        type: "POST",
+        data: {id:id, _token: '{{csrf_token()}}'},
+
+        success: function(data){
+            Success = true;
+            $('#imgdelete' + id).remove(); // Remove by ID.
+        },
+        error: function(data){
+            Success = false;
+        } 
+    });
+  }
+</script>
 </html>

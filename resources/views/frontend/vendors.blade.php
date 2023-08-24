@@ -14,7 +14,7 @@
             </div>
             <div class="pull-right">
                 <ul class="page-breadcrumb">
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="{{ route('index')}}">Home</a></li>
                     <li>Vendors</li>
                 </ul>
             </div>
@@ -52,6 +52,7 @@
                     <div class="lower-box">
                         <h3><a href="{{ route('vendordetail',encrypt($agent->id))}}">{{ $agent->username }}</a></h3>
                         <div class="designation">{{ $agent->first_name }}</div>
+                        
                     </div>
                 </div>
             </div>

@@ -14,7 +14,7 @@
             </div>
             <div class="pull-right">
                 <ul class="page-breadcrumb">
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="{{ route('index')}}">Home</a></li>
                     <li>gallery</li>
                 </ul>
             </div>
