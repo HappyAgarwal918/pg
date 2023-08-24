@@ -79,7 +79,7 @@
                 </tbody>
               </table>
             </div>
-            <a href="{{ route('property.create') }}">Add Property</a>
+            <a class="btn btn-primary mt-3" href="{{ route('property.create') }}">Add Property</a>
           </div>
         </div>
         </div>

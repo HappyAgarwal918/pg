@@ -1,7 +1,7 @@
 <!-- header.html -->
 <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
   <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-    <a class="navbar-brand brand-logo mx-auto" href="{{ route('index')}}"><img src="{{ asset($frontend['logo'][0]->path) }}" class="mr-2" alt="logo"/></a>
+    <a class="navbar-brand brand-logo mx-auto" href="{{ route('index')}}" style="font-size: 1.2rem; font-weight: bold;"><img src="{{ asset($frontend['logo'][0]->path) }}" class="mr-2" alt="logo"/> HAPPI TO HELP</a>
     <a class="navbar-brand brand-logo-mini" href="{{ route('index')}}"><img src="{{ asset($frontend['logo'][2]->path) }}" alt="logo"/></a>
   </div>
   <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
@@ -11,12 +11,12 @@
     <ul class="navbar-nav mr-lg-2">
       <li class="nav-item nav-search d-none d-lg-block">
         <div class="input-group">
-          <div class="input-group-prepend hover-cursor" id="navbar-search-icon">
+          <!-- <div class="input-group-prepend hover-cursor" id="navbar-search-icon">
             <span class="input-group-text" id="search">
               <i class="icon-search"></i>
             </span>
           </div>
-          <input type="text" class="form-control" id="navbar-search-input" placeholder="Search now" aria-label="search" aria-describedby="search">
+          <input type="text" class="form-control" id="navbar-search-input" placeholder="Search now" aria-label="search" aria-describedby="search"> -->
         </div>
       </li>
     </ul>

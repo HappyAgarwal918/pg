@@ -132,17 +132,17 @@ class ownerPropertyController extends Controller
                  
         }
 
-        // if($user){
+        if($user){
 
-        //     $mailData = [
-        //         'title' => 'Mail from Paying Guest',
-        //         'body' => 'This is for testing email using smtp.'
-        //     ];
+            $mailData = [
+                'title' => 'Mail from '.env('APP_NAME'),
+                'body' => 'Property added Successfully'
+            ];
              
-        //     Mail::to(Auth()->user()->email)->cc('happyagarwal918@gmail.com')->send(new DemoMail($mailData));
-        // }
-
-        return redirect('property.index')->with('successful_message', 'Property created successfully');
+            Mail::to(Auth()->user()->email)->cc('info@happitohelp.com')->send(new DemoMail($mailData));
+        }
+        
+        return redirect()->route('property.index')->with('successful_message', 'Property created successfully');
     }
 
     /**

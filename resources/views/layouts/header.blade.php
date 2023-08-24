@@ -85,7 +85,7 @@
                     </div>
                 </nav>
                 <!-- Main Menu End-->
-                <a href="{{ route('index')}}" class="d-block d-md-none" style="width: 70px;position: absolute;left: 44%;right: 44%; margin-top: 6px;"><img src="{{ asset($frontend['logo'][0]->path)}}" alt=""></a>
+                <a href="{{ route('index')}}" class="d-block d-md-none" style="width: 54px;position: absolute;left: 44%;right: 44%; margin-top: 6px;"><img src="{{ asset($frontend['logo'][0]->path)}}" alt=""></a>
                 
                 <!--Search Box-->
                 <div class="search-box-outer new-wishlist">

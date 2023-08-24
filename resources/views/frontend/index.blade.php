@@ -25,8 +25,8 @@
 	<div class="auto-container">
     	<!--Sec Title-->
         <div class="sec-title centered">
-        	<div class="title">Our Featured Properties For Sale and Rent</div>
-            <h2>Properties For Sale & Rent</h2>
+        	<div class="title">Our Featured Properties For Rent</div>
+            <h2>Properties For Rent</h2>
             <div class="separator"></div>
         </div>
         <div class="row clearfix">
@@ -34,12 +34,14 @@
         	<!--Property Block-->
             <div class="property-block col-md-4 col-sm-6 col-xs-12">
             	<div class="inner-box">
-                	<div class="image">
-                    	<a href="{{ route('propertydetail',encrypt($properties->id))}}"><img src="{{ asset('assets/images/resource/property-1.jpg')}}" alt="" /></a>
-                        <div class="sale">{{ $properties->tenant }}</div>
-                        <div class="price">${{ min(array_filter([$properties->sb_price, $properties->db_price, $properties->tb_price, $properties->fb_price])) }} Onwards</div>
-                        <label class="wishlist @foreach($wishlist as $wishlists) @if($wishlists->property_id == $properties->id) red-heart @endif @endforeach" id="wishlist{{$properties->id}}"><span class="fa fa-heart"><input class="" type="button" onclick="wishlist({{$properties->id}})"></span></label>
-                    </div>
+                    <a href="{{ route('propertydetail',encrypt($properties->id))}}">
+                    	<div class="image" style="background-image:url({{ asset($properties['propertyimg']['0']->img_src)}});">
+                        	<!-- <a href="{{ route('propertydetail',encrypt($properties->id))}}"><img src="{{ asset($properties['propertyimg']['0']->img_src)}}" alt="" /></a> -->
+                            <div class="sale">{{ $properties->tenant }}</div>
+                            <div class="price">${{ min(array_filter([$properties->sb_price, $properties->db_price, $properties->tb_price, $properties->fb_price])) }} Onwards</div>
+                        </div>
+                    </a>
+                    <label class="wishlist @foreach($wishlist as $wishlists) @if($wishlists->property_id == $properties->id) red-heart @endif @endforeach" id="wishlist{{$properties->id}}"><span class="fa fa-heart"><input class="" type="button" onclick="wishlist({{$properties->id}})"></span></label>
                     <div class="lower-content">
                     	<div class="upper-box">
                         	<h3><a href="{{ route('propertydetail',encrypt($properties->id))}}">{{ $properties->locality }}</a></h3>

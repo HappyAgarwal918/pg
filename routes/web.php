@@ -9,7 +9,7 @@ use App\Http\Controllers\profileController;
 use App\Http\Controllers\Broker\brokerPropertyController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\vendorFeedbackController;
-use App\Http\Controllers\feedbackVendorController;
+use App\Http\Controllers\User\FeedbackController;
 use App\Http\Controllers\wishlistController;
 use App\Http\Controllers\propertyController;
 use App\Http\Controllers\Admin\FrontendAdminController;
@@ -61,6 +61,8 @@ Route::get('send-mail', [MailController::class, 'index']);
 Route::middleware(['auth'])->group(function () {
     Route::controller(propertyController::class)->group(function () {
         Route::get('property/detail/{id}', 'propertydetail')->name('propertydetail');
+        Route::post('delete/image', [propertyController::class, 'deletepropertyimg'])->name('delete.propertyimg');
+        Route::post('upload/image/{id}', [propertyController::class, 'uploadpropertyimg'])->name('upload.propertyimg');
     });
     Route::controller(profileController::class)->group(function () {
         Route::get('/settings', 'settings')->name('profile.settings');
@@ -88,7 +90,7 @@ Route::middleware(['auth', 'user-access:user'])->group(function () {
         Route::get('/home', [HomeController::class, 'index'])->name('home');
         // Show Users their review given to vendors
 
-        Route::resource('/feedback', feedbackVendorController::class);
+        Route::resource('/feedback', FeedbackController::class);
     });
 });
 

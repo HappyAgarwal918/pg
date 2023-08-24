@@ -445,6 +445,37 @@
 	      	</div>
 	  	</div>
 	</div>
+	<div class="col-md-4 grid-margin">
+		<div class="card">
+			<div class="card-body">
+				<div class="wrap">
+					@foreach($data['image'] as $propertyimg)
+					<div class="row mb-3" id="imgdelete{{$propertyimg->id+785}}">
+						<div class="col-md-8"><img src="{{ asset($propertyimg->img_src)}}" width="200"></div>
+						<div class="col-md-4"><a class="btn btn-danger" onclick="deleteimg({{$propertyimg->id+785}})">delete</a></div>
+					</div>
+					@endforeach
+					<p class="card-title">Add New Images</p>
+					<form action="{{ route('upload.propertyimg',$data->id)}}" method="POST" name="form" enctype="multipart/form-data">
+						@csrf
+					    <div class="upload upload">
+					      <div class="upload__wrap">
+					        <div class="upload__btn">
+					          <input class="upload__input" type="file" name="upload[]" multiple="multiple" data-max-count="8" accept="image/*"/>
+					        </div>
+					      </div>
+					      <div class="upload__mess">
+					        <p class="count_img hidden_ms">Maximum Upload Property: <strong class="count_img_var">8</strong></p>
+					        <p class="size_img hidden_ms">Maximum size: <strong class="size_img_var">5 Mb</strong></p>
+					        <p class="file_types hidden_ms">File Format: <strong class="file_types_var">jpg, png</strong></p>
+					      </div>
+					    </div>
+					    <button class="btn btn-primary mt-3" type="submit">Upload</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 @endsection
 

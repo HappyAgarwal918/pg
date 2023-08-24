@@ -13,7 +13,7 @@
             </div>
             <div class="pull-right">
                 <ul class="page-breadcrumb">
-                    <li><a href="{{ route('home')}}">Home</a></li>
+                    <li><a href="{{ route('index')}}">Home</a></li>
                     <li>Property Detail</li>
                 </ul>
             </div>
@@ -43,26 +43,21 @@
                         <!--Carousel Box-->
                         <div class="carousel-box">
                         	<div class="property-single-carousel owl-carousel owl-theme">
+                                @foreach($data['propertyimg'] as $images)
                             	<div class="slide">
-                                    <div class="image">
-                                        <img src="{{ asset('assets/images/resource/property-19.jpg')}}" alt="" />
+                                    <div class="image" style="background-image:url({{ asset($images->img_src)}});">
+                                        <!-- <img src="{{ asset($images->img_src)}}" alt="" /> -->
                                     </div>
                                 </div>
-                                <div class="slide">
-                                    <div class="image">
-                                        <img src="{{ asset('assets/images/resource/property-19.jpg')}}" alt="" />
-                                    </div>
-                                </div>
-                                <div class="slide">
-                                    <div class="image">
-                                        <img src="{{ asset('assets/images/resource/property-19.jpg')}}" alt="" />
-                                    </div>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
 
                         <!-- Property Desciption -->
-                        <h3>Property Detail</h3>
+                        <div class="d-flex justify-content-between">
+                            <h3>Property Detail</h3>
+                            <a class="btn btn-primary align-self-start" href="{{ route('vendordetail', encrypt($data['propertyuser']->id))}}">Contact {{ $data['propertyuser']->username }}</a>
+                        </div>
                         <div class="text text-capitalize">
                             <p> {{ $data->description }}</p>
 
@@ -146,7 +141,7 @@
             <div class="sidebar-side col-lg-4 col-md-4 col-sm-12 col-xs-12">
             	<aside class="sidebar margin-top-sidebar">
                     <!-- Properties Posts -->
-                    <div class="sidebar-widget properties-posts">
+                    <!-- <div class="sidebar-widget properties-posts">
                         <div class="sidebar-title">
                         	<h3>Similar Properties</h3>
                             <div class="separator"></div>
@@ -172,7 +167,7 @@
                             <div class="address">Unit 4/Street 14 Indus Street </div>
                             <div class="post-info">Price: 11,412</div>
                         </article>
-                    </div> 
+                    </div> --> 
                     <div class="sidebar-widget properties-posts">
                         <!--Property Map Section-->
                         <div class="sidebar-title">

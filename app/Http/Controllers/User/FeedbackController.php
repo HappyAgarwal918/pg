@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\vendorfeedback;
 use Auth;
 
-class feedbackVendorController extends Controller
+class FeedbackController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,7 +19,8 @@ class feedbackVendorController extends Controller
     {
         $id = Auth::User()->id;
 
-        $data = vendorfeedback::where('user_id', $id)->with('feedback_vendor')->get();
+        $data = vendorfeedback::where('user_id', $id)
+                ->with('feedback_vendor')->get();
 
         return view('dashboard.user.feedback.index', compact('data'));
     }
@@ -48,7 +50,6 @@ class feedbackVendorController extends Controller
 
         return back()->with('successfull_message', 'Feedback added succesfully');
     }
-    
 
     /**
      * Display the specified resource.
@@ -73,8 +74,7 @@ class feedbackVendorController extends Controller
      */
     public function edit($id)
     {
-       //
- 
+        //
     }
 
     /**
@@ -98,12 +98,9 @@ class feedbackVendorController extends Controller
     public function destroy($id)
     {
         $feedbackid = decrypt($id);
-
         $feedback = vendorfeedback::findorfail($feedbackid);
-
         $feedback->delete();
 
         return back();
-
     }
 }

@@ -131,17 +131,17 @@ class brokerPropertyController extends Controller
                  
         }
 
-        // if($user){
+        if($user){
 
-        //     $mailData = [
-        //         'title' => 'Mail from Paying Guest',
-        //         'body' => 'Property added Successfully'
-        //     ];
+            $mailData = [
+                'title' => 'Mail from '.env('APP_NAME'),
+                'body' => 'Property added Successfully'
+            ];
              
-        //     Mail::to(Auth()->user()->email)->cc('happyagarwal918@gmail.com')->send(new DemoMail($mailData));
-        // }
+            Mail::to(Auth()->user()->email)->cc('info@happitohelp.com')->send(new DemoMail($mailData));
+        }
 
-        return redirect('broker.index')->with('successful_message', 'Property created successfully');
+        return redirect()->route('broker.index')->with('successful_message', 'Property created successfully');
     }
 
     /**

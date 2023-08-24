@@ -13,7 +13,7 @@
             </div>
             <div class="pull-right">
                 <ul class="page-breadcrumb">
-                    <li><a href="{{ route('home')}}">Home</a></li>
+                    <li><a href="{{ route('index')}}">Home</a></li>
                     <li>About us</li>
                 </ul>
             </div>
@@ -29,8 +29,8 @@
             <!--Content Column-->
             <div class="content-column col-md-12 col-sm-12 col-xs-12">
                 <div class="inner-column">
-                    <div class="bold-text text-center fs-3">We simplify the rental process and make it easy to find a place you can call home.</div>
-                    <div class="text text-center"><p>[Name] aims to connect tenants with their perfect rental property and provide brokers with a platform to showcase their services.</p></div>
+                    <div class="bold-text text-center fs-3">We simplify the Rental process and make it easy to find a place you can call home.</div>
+                    <div class="text text-center"><p>{{ env('APP_NAME')}} aims to connect tenants with their perfect rental property and provide brokers with a platform to showcase their services.</p></div>
                 </div>
             </div>
         </div>
@@ -40,7 +40,7 @@
             	<div class="inner-column">
                 	<!--Sec Title-->
                     <div class="sec-title">
-                        <div class="title">About Shina</div>
+                        <div class="title">About {{ env('APP_NAME')}}</div>
                         <h2>Who We Are</h2>
                         <div class="separator"></div>
                     </div>
@@ -68,7 +68,7 @@
 	<div class="auto-container">
     	<!--Sec Title-->
         <div class="sec-title centered">
-        	<div class="title">We are Offering the Best Real Estate</div>
+        	<div class="title">We are Offering the Best Rental Properties</div>
             <h2>How It Works</h2>
             <div class="separator"></div>
         </div>

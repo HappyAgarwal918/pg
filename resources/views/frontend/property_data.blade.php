@@ -2,12 +2,14 @@
 	<!--Property Block-->
     <div class="featured-block col-md-4 col-sm-6 col-xs-12">
     	<div class="inner-box">
-        	<div class="image">
-            	<a href="{{ route('propertydetail',encrypt($properties->id))}}"><img src="{{ asset('assets/images/resource/property-1.jpg')}}" alt="" /></a>
-                <div class="sale">{{ $properties->tenant }}</div>
-                <div class="price">{{ min(array_filter([$properties->sb_price, $properties->db_price, $properties->tb_price, $properties->fb_price])) }}</div>
-                <label class="wishlist @foreach($wishlist as $wishlists) @if($wishlists->property_id == $properties->id) red-heart @endif @endforeach" id="wishlist{{$properties->id}}"><span class="fa fa-heart"><input class="" type="button" onclick="wishlist({{$properties->id}})"></span></label>
-            </div>
+            <a href="{{ route('propertydetail',encrypt($properties->id))}}">
+            	<div class="image" style="background-image:url({{ asset($properties['propertyimg']['0']->img_src)}});">
+                	<!-- <a href="{{ route('propertydetail',encrypt($properties->id))}}"><img src="{{ asset($properties['propertyimg']['0']->img_src)}}" alt="" /></a> -->
+                    <div class="sale">{{ $properties->tenant }}</div>
+                    <div class="price">{{ min(array_filter([$properties->sb_price, $properties->db_price, $properties->tb_price, $properties->fb_price])) }}</div>
+                </div>
+            </a>
+            <label class="wishlist @foreach($wishlist as $wishlists) @if($wishlists->property_id == $properties->id) red-heart @endif @endforeach" id="wishlist{{$properties->id}}"><span class="fa fa-heart"><input class="" type="button" onclick="wishlist({{$properties->id}})"></span></label>
             <div class="lower-content">
             	<div class="upper-box">
                 	    <h3><a href="{{ route('propertydetail',encrypt($properties->id))}}">{{ $properties->locality }}</a></h3>

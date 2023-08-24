@@ -22,7 +22,11 @@ class frontendController extends Controller
     {
         $wishlist = [];
         $data['testimonial'] = testimonial::get();
-        $data['properties'] = properties::with('propertyuser')->latest()->limit(6)->get();
+        $data['properties'] = properties::with('propertyuser')->with([
+            'propertyimg' => function ($query) {
+                $query->where('excerpt', '1');
+             }
+        ])->latest()->limit(6)->get();
         $data['vendors'] = User::where('type', 2)->orWhere('type', 3)->get();
         if (Auth()->user()) {
             $wishlist = wishlist::where('user_id', Auth()->user()->id)->get();
@@ -60,7 +64,7 @@ class frontendController extends Controller
             'message' => $data->message,
         ];
          
-        Mail::to('info@happitohelp.com')->send(new DemoMail($mailData));
+        Mail::to('happitohelp001@gmail.com')->send(new DemoMail($mailData));
 
         return back()->with('success', 'Form Submitted Successfully');
     }
