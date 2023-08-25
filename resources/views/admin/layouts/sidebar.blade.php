@@ -30,7 +30,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link {{ (request()->is('admin/owner*')) ? 'active' : '' }}" href="#" >
+        <a class="nav-link {{ (request()->is('admin/owner*')) ? 'active' : '' }}" href="{{ route('owner.index')}}" >
           <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
             <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
               <title>owners</title>
@@ -50,7 +50,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link {{ (request()->is('admin/broker*')) ? 'active' : '' }}" href="#">
+        <a class="nav-link {{ (request()->is('admin/broker*')) ? 'active' : '' }}" href="{{ route('broker.index')}}">
           <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
             <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
               <title>brokers</title>
@@ -159,6 +159,13 @@
         </div>
       </div>
     </div> -->
-    <a class="btn bg-gradient-primary mt-4 w-100" href="#" type="button">Login</a>
+    <a href="{{ route('logout') }}"
+                               onclick="event.preventDefault();
+                                             document.getElementById('logout-form').submit();">
+    <button class="btn bg-gradient-primary mt-4 w-100" type="submit" class="col-md-8 btn btn-primary center">Logout</button>
+    </a>
+    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+      @csrf
+    </form>
   </div>
 </aside>

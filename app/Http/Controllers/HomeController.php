@@ -107,7 +107,7 @@ class HomeController extends Controller
                 }else if (auth()->user()->type == 'owner') {
                     return redirect()->route('owner.home');
                 }else{
-                    return redirect()->route('home');
+                    return redirect()->route('user.home');
                 }
             }
         }

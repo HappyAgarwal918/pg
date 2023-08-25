@@ -61,15 +61,15 @@
                     <td class="white-sp-normal">{{ $properties->tenant }}</td>
                     <td class="white-sp-normal">{{ $properties->amenities }}</td>
                     <td>
-                        <div class="badge badge-success badge-success-alt white-sp-normal"><a href="{{ route('broker.edit', encrypt($properties->id)) }}">Edit</a></div>
-                        <div class="badge badge-success badge-success-alt white-sp-normal"><a href="{{ route('broker.show',encrypt($properties->id)) }}">View</a></div>
+                        <div class="badge badge-success badge-success-alt white-sp-normal"><a href="{{ route('broker.property.edit', encrypt($properties->id)) }}">Edit</a></div>
+                        <div class="badge badge-success badge-success-alt white-sp-normal"><a href="{{ route('broker.property.show',encrypt($properties->id)) }}">View</a></div>
                         <div class="badge badge-success badge-success-alt white-sp-normal">
-                        <a href="{{ route('broker.destroy', encrypt($properties->id)) }}"
+                        <a href="{{ route('broker.property.destroy', encrypt($properties->id)) }}"
                             onclick="event.preventDefault();
                             document.getElementById('delete-property').submit();">
                             Delete
                         </a>
-                        <form id="delete-property" action="{{ route('broker.destroy', encrypt($properties->id)) }}" method="POST" >
+                        <form id="delete-property" action="{{ route('broker.property.destroy', encrypt($properties->id)) }}" method="POST" >
                         <input name="_method" type="hidden" value="DELETE">
                           @csrf
                         </form>
@@ -79,7 +79,7 @@
                 </tbody>
               </table>
             </div>
-            <a class="btn btn-primary mt-3" href="{{ route('broker.create') }}">Add Property</a>
+            <a class="btn btn-primary mt-3" href="{{ route('broker.property.create') }}">Add Property</a>
           </div>
         </div>
         </div>

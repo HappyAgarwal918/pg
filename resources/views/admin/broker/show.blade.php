@@ -62,7 +62,7 @@
               </div>
             </div>
           </div>
-          <a type="button" class="btn btn-primary" href="{{ route('user.edit', encrypt($data->id))}}">Edit Profile</a>
+          <a type="button" class="btn btn-primary" href="{{ route('broker.edit', encrypt($data->id))}}">Edit Profile</a>
         </div>
       </div>
     </div>

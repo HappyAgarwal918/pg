@@ -21,7 +21,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $data = User::get();
+        $data = User::where('type', '4')->get();
 
         return view('admin.users.index', compact('data'));
     }

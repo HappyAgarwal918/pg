@@ -141,7 +141,7 @@ class brokerPropertyController extends Controller
             Mail::to(Auth()->user()->email)->cc('info@happitohelp.com')->send(new DemoMail($mailData));
         }
 
-        return redirect()->route('broker.index')->with('successful_message', 'Property created successfully');
+        return redirect()->route('broker.property.index')->with('successful_message', 'Property created successfully');
     }
 
     /**
@@ -275,7 +275,7 @@ class brokerPropertyController extends Controller
         }
 
 
-        return redirect()->route('broker.index');
+        return redirect()->route('broker.property.index');
     }
 
     /**

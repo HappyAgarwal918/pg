@@ -142,7 +142,7 @@ class ownerPropertyController extends Controller
             Mail::to(Auth()->user()->email)->cc('info@happitohelp.com')->send(new DemoMail($mailData));
         }
         
-        return redirect()->route('property.index')->with('successful_message', 'Property created successfully');
+        return redirect()->route('owner.property.index')->with('successful_message', 'Property created successfully');
     }
 
     /**
@@ -273,7 +273,7 @@ class ownerPropertyController extends Controller
             ]);
         }
 
-        return redirect()->route('property.index');
+        return redirect()->route('owner.property.index');
     }
 
     /**
