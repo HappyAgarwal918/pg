@@ -11,6 +11,7 @@ use App\Models\sponser;
 use App\Models\blogs;
 use App\Models\banner;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Route;
 
 class FrontendAdminController extends Controller
 {
@@ -272,6 +273,13 @@ class FrontendAdminController extends Controller
         $data = Auth()->user();
 
         return view('admin.settings',compact('data'));
+    }
+
+    public function routes(Request $request)
+    {
+        $routes = Route::getRoutes();
+  
+        return view('admin.route-list', compact('routes'));
     }
 
 }

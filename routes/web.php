@@ -15,6 +15,8 @@ use App\Http\Controllers\propertyController;
 use App\Http\Controllers\Admin\FrontendAdminController;
 use App\Http\Controllers\Admin\UserAdminController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\BrokerController;
+use App\Http\Controllers\Admin\OwnerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -87,9 +89,8 @@ All Normal Users Routes List
 --------------------------------------------*/
 Route::middleware(['auth', 'user-access:user'])->group(function () {
     Route::group(['prefix' => 'users'], function () {
-        Route::get('/home', [HomeController::class, 'index'])->name('home');
+        Route::get('/home', [HomeController::class, 'index'])->name('user.home');
         // Show Users their review given to vendors
-
         Route::resource('/feedback', FeedbackController::class);
     });
 });
@@ -120,9 +121,12 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
             Route::post('/blogs/add', 'addblog')->name('admin.addblog');
             Route::get('/blog/destroy/{key}', 'destroyblog')->name('admin.destroyblog');
             Route::get('/settings', 'setting')->name('admin.setting');
+            Route::get('get-all-routes', 'routes')->name('get.route');
         });
         Route::post('/user/{user}/password', [UserController::class, 'password'])->name('user.password');
         Route::resource('/user', UserController::class);
+        Route::resource('/broker', BrokerController::class);
+        Route::resource('/owner', OwnerController::class);
     });
 });
 
@@ -136,13 +140,13 @@ Route::middleware(['auth', 'user-access:broker'])->group(function () {
         Route::get('/home', [HomeController::class, 'brokerHome'])->name('broker.home');
         Route::resource('/property', brokerPropertyController::class )
         ->names([
-            'index' => 'broker.index',
-            'create' => 'broker.create', 
-            'store' => 'broker.store',
-            'show' => 'broker.show', 
-            'edit' => 'broker.edit', 
-            'update' => 'broker.update',
-            'destroy' => 'broker.destroy'
+            'index' => 'broker.property.index',
+            'create' => 'broker.property.create', 
+            'store' => 'broker.property.store',
+            'show' => 'broker.property.show', 
+            'edit' => 'broker.property.edit', 
+            'update' => 'broker.property.update',
+            'destroy' => 'broker.property.destroy'
         ]);
         Route::get('/feedback', [vendorFeedbackController::class, 'usersfeedback'])->name('broker.feedback');
     });
@@ -156,7 +160,16 @@ All Owner Routes List
 Route::middleware(['auth', 'user-access:owner'])->group(function () {
     Route::group(['prefix' => 'owner'], function () {
         Route::get('/home', [HomeController::class, 'ownerHome'])->name('owner.home');
-        Route::resource('/property', ownerPropertyController::class);
+        Route::resource('/property', ownerPropertyController::class)
+        ->names([
+            'index' => 'owner.property.index',
+            'create' => 'owner.property.create', 
+            'store' => 'owner.property.store',
+            'show' => 'owner.property.show', 
+            'edit' => 'owner.property.edit', 
+            'update' => 'owner.property.update',
+            'destroy' => 'owner.property.destroy'
+        ]);
         Route::get('/feedback', [vendorFeedbackController::class, 'usersfeedback'])->name('owner.feedback');
     });
 });

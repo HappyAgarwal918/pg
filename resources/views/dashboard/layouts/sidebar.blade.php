@@ -10,7 +10,7 @@
 
     @if(Auth()->user()->type == "broker")
     <li class="nav-item">
-      <a class="nav-link" href="{{ route('broker.index')}}">
+      <a class="nav-link" href="{{ route('broker.property.index')}}">
         <i class="icon-contract menu-icon"></i>
         <span class="menu-title">Properties</span>
       </a>
@@ -23,7 +23,7 @@
     </li>
     @elseif(Auth()->user()->type == "owner")
     <li class="nav-item">
-      <a class="nav-link" href="{{ route('property.index')}}">
+      <a class="nav-link" href="{{ route('owner.property.index')}}">
         <i class="icon-contract menu-icon"></i>
         <span class="menu-title">Properties</span>
       </a>

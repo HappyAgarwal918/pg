@@ -168,7 +168,7 @@
                 </div>
             </div>
             <div class="badge badge-success badge-success-alt white-sp-normal px-3">
-                <a href="{{ route('broker.edit', encrypt($property->id)) }}">Edit</a>
+                <a href="{{ route('broker.property.edit', encrypt($property->id)) }}">Edit</a>
             </div>
         </div><!--//app-card-body-->
     </div><!--//app-card-->

@@ -10,7 +10,7 @@
       <div class="card-body">
         <p class="card-title mb-5">Add Properties</p>
         <!-- MultiStep Form -->
-        <form action="{{ route('property.store') }}" method="post" id="multistep_form" enctype="multipart/form-data">
+        <form action="{{ route('owner.property.store') }}" method="post" id="multistep_form" enctype="multipart/form-data">
           @csrf
           <div id="form1" class="tab">
             <div class="panel-body">

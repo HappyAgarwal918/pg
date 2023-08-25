@@ -14,7 +14,7 @@
         </div>
         <div class="card-body px-0 pt-0 pb-2">
           <div class="table-responsive px-5 py-0">
-            <a class="btn btn-success addnew-button" target="_blank" href="{{ route('user.create')}}">Add New</a>
+            <a class="btn btn-success addnew-button" target="_blank" href="{{ route('broker.create')}}">Add New</a>
             <table id="table_id" class="table align-items-center mb-0">
               <thead>
                 <tr>
@@ -58,9 +58,9 @@
                     <span class="text-secondary text-xs font-weight-bold">23/04/18</span>
                   </td>
                   <td class="align-middle">
-                    <a class="btn btn-link text-primary text-gradient mb-0" href="{{ route('user.show', encrypt($value->id))}}"><i class="far fa-eye me-2"></i>View</a>
-                    <a class="btn btn-link text-danger text-gradient mb-0" href="{{ route('user.destroy', encrypt($value->id))}}"><i class="far fa-trash-alt me-2"></i>Delete</a>
-                    <a class="btn btn-link text-dark mb-0" href="{{ route('user.edit', encrypt($value->id))}}"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>
+                    <a class="btn btn-link text-primary text-gradient mb-0" href="{{ route('broker.show', encrypt($value->id))}}"><i class="far fa-eye me-2"></i>View</a>
+                    <a class="btn btn-link text-danger text-gradient mb-0" href="{{ route('broker.destroy', encrypt($value->id))}}"><i class="far fa-trash-alt me-2"></i>Delete</a>
+                    <a class="btn btn-link text-dark mb-0" href="{{ route('broker.edit', encrypt($value->id))}}"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>
                   </td>
                 </tr>
                 @endforeach
