@@ -35,7 +35,11 @@
             <div class="property-block col-md-4 col-sm-6 col-xs-12">
             	<div class="inner-box">
                     <a href="{{ route('propertydetail',encrypt($properties->id))}}">
-                    	<div class="image" style="background-image:url({{ asset($properties['propertyimg']->img_src)}});">
+                        @if(empty($properties['propertyimg']))
+                        <div class="image" style="background-image:url({{ asset('property_img/room-sketch.jpg') }})">
+                        @else
+                    	<div class="image" style="background-image:url({{ asset($properties['propertyimg']['0']->img_src)}});">
+                        @endif
                         	<!-- <a href="{{ route('propertydetail',encrypt($properties->id))}}"><img src="{{ asset($properties['propertyimg']['0']->img_src)}}" alt="" /></a> -->
                             <div class="sale">{{ $properties->tenant }}</div>
                             <div class="price">${{ min(array_filter([$properties->sb_price, $properties->db_price, $properties->tb_price, $properties->fb_price])) }} Onwards</div>

@@ -54,7 +54,13 @@
                       </a>
                     </td> -->
                     <td class="white-sp-normal">{{ $key +1 }}</td>
-                    <td class="white-sp-normal"><img src="{{ asset($properties['propertyimg']->img_src) }}"></td>
+                    <td class="white-sp-normal">
+                      @if(empty($properties['propertyimg']))
+                      <img src="{{ asset('property_img/room-sketch.jpg') }}">
+                      @else
+                      <img src="{{ asset($properties['propertyimg']['0']->img_src) }}">
+                      @endif
+                    </td>
                     <td class="white-sp-normal">{{ $properties->full_address }}</td>
                     <td class="white-sp-normal">{{ $properties->room_type }}</td>
                     <td class="white-sp-normal">{{ $properties->meal_type }}</td>
