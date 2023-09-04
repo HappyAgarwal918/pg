@@ -35,7 +35,7 @@
             <div class="property-block col-md-4 col-sm-6 col-xs-12">
             	<div class="inner-box">
                     <a href="{{ route('propertydetail',encrypt($properties->id))}}">
-                        @if(isset($properties['propertyimg']))
+                        @if(sizeof($properties['propertyimg']))
                     	<div class="image" style="background-image:url({{ asset($properties['propertyimg']['0']->img_src)}});">
                         @else
                         <div class="image" style="background-image:url({{ asset('property_img/room-sketch.jpg') }})">
