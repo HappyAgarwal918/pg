@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\properties;
 use Mail;
 use App\Mail\DemoMail;
+use App\Models\propertyImg;
 
 class brokerPropertyController extends Controller
 {

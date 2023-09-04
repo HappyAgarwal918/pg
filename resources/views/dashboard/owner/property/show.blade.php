@@ -157,7 +157,13 @@
             </div>
             <div class="row mb-3 border-bottom">
                 <div class="col-md-3"><label class="form-label">Excerpt Image:</label></div>
-                <div class="col-md-9"><a class="image-link" href=""><img src="{{ asset($property['propertyimg']['0']->img_src) }}" width="100"></a>&emsp;<a><img src="" width="100"></a></div>
+                <div class="col-md-9"><a class="image-link" href="">
+                    @if(sizeof($properties['propertyimg']))
+                    <img src="{{ asset($property['propertyimg']['0']->img_src)}}" width="100">
+                    @else
+                    <img src="{{ asset('property_img/room-sketch.jpg') }}">
+                    @endif
+                </a>&emsp;<a><img src="" width="100"></a></div>
             </div>
             <div class="row mb-3 border-bottom">
                 <div class="col-md-3"><label class="form-label">Images:</label></div>
