@@ -432,7 +432,7 @@
 		                			@if(sizeof($data['propertyimg']))
 		                			<img src="{{ asset($data['propertyimg']['0']->img_src)}}" width="100">
 		                			@else
-			                      	<img src="{{ asset('property_img/room-sketch.jpg') }}">
+			                      	<img src="{{ asset('property_img/room-sketch.jpg') }}" width="100">
 			                      	@endif
 		                		</div>
 		                		<div class="col-md-6">
