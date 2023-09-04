@@ -159,9 +159,9 @@
                 <div class="col-md-3"><label class="form-label">Excerpt Image:</label></div>
                 <div class="col-md-9"><a class="image-link" href="">
                     @if(sizeof($property['propertyimg']))
-                    <img src="{{ asset($property['propertyimg']['0']->img_src)}}" width="100">
+                    <img src="{{ asset($property['propertyimg']['0']->img_src)}}" width="150">
                     @else
-                    <img src="{{ asset('property_img/room-sketch.jpg') }}">
+                    <img src="{{ asset('property_img/room-sketch.jpg') }}" width="150">
                     @endif
                 </a>&emsp;<a><img src="" width="100"></a></div>
             </div>

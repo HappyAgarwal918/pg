@@ -430,9 +430,9 @@
 		                	<div class="row">
 		                		<div class="col-md-6">
 		                			@if(sizeof($data['propertyimg']))
-		                			<img src="{{ asset($data['propertyimg']['0']->img_src)}}" width="100">
+		                			<img src="{{ asset($data['propertyimg']['0']->img_src)}}" width="150">
 		                			@else
-			                      	<img src="{{ asset('property_img/room-sketch.jpg') }}" width="100">
+			                      	<img src="{{ asset('property_img/room-sketch.jpg') }}" width="150">
 			                      	@endif
 		                		</div>
 		                		<div class="col-md-6">
