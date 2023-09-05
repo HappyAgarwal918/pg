@@ -3,8 +3,11 @@
     <div class="featured-block col-md-4 col-sm-6 col-xs-12">
     	<div class="inner-box">
             <a href="{{ route('propertydetail',encrypt($properties->id))}}">
-            	<div class="image" style="background-image:url({{ asset($properties['propertyimg']['0']->img_src)}});">
-                	<!-- <a href="{{ route('propertydetail',encrypt($properties->id))}}"><img src="{{ asset($properties['propertyimg']['0']->img_src)}}" alt="" /></a> -->
+                @if(sizeof($properties['propertyimg']))
+                <div class="image" style="background-image:url({{ asset($properties['propertyimg']['0']->img_src)}});">
+                @else
+                <div class="image" style="background-image:url({{ asset('property_img/room-sketch.jpg') }})">
+                @endif
                     <div class="sale">{{ $properties->tenant }}</div>
                     <div class="price">{{ min(array_filter([$properties->sb_price, $properties->db_price, $properties->tb_price, $properties->fb_price])) }}</div>
                 </div>
