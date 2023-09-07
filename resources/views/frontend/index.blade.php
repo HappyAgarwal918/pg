@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'Homepage')
+@section('title', 'Affordable PG’s  for Rent Near You in Chandigarh | Happi to Help')
 @section('description', 'Shina Real Estate HTML Template')
 
 @section('css')

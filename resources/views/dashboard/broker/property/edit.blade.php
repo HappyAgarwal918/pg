@@ -342,13 +342,9 @@
 		                <div class="col-md-8">
 		                    <select name="tenant" class="form-select form-control" id="tenant">
 		                    	<option value="">Select any one</option>
-		                        <option value="All" @if($data->tenant == "All") selected  @endif>All</option>
-		                        <option value="Boys Only" @if($data->tenant == "Boys Only") selected  @endif>Boys Only</option>
-		                        <option value="Girls Only" @if($data->tenant == "Girls Only") selected  @endif>Girls Only</option>
-		                        <option value="Family Only" @if($data->tenant == "Family Only") selected  @endif>Family Only</option>
-		                        <option value="Boys & Girls" @if($data->tenant == "Boys & Girls") selected  @endif>Boys & Girls</option>
-		                        <option value="Boys & Family" @if($data->tenant == "Boys & Family") selected  @endif>Boys & Family</option>
-		                        <option value="Girls & Family" @if($data->tenant == "Girls & Family") selected  @endif>Girls & Family</option>
+		                    	@foreach($tenants as $tenant)
+		                        <option value="{{$tenant->value}}" @if($data->tenant == $tenant->value) selected  @endif>{{$tenant->name}}</option>
+		                        @endforeach
 		                    </select>
 		                <label id="tenant-error" class="error" for="tenant"></label>
 		                </div>

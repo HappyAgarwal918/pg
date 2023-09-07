@@ -55,7 +55,7 @@ Route::controller(propertyController::class)->group(function () {
     Route::post('sortby', 'sortby')->name('sortby');
     Route::get('search', 'propertysearch')->name('search');
     Route::get('vendors', 'vendors')->name('vendors');
-    Route::get('vendor/{id}', 'vendordetail')->name('vendordetail');
+    Route::get('vendors/{id}', 'vendordetail')->name('vendordetail');
 });
 
 Route::get('send-mail', [MailController::class, 'index']);

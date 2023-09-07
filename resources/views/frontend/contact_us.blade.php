@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'Contact Us')
+@section('title', 'Contact Us | Happi To Help')
 @section('description', 'Shina Real Estate HTML Template')
 
 @section('content')
@@ -70,29 +70,25 @@
 <!--End Contact Page Section-->
 
 <!--Clients Section-->
-<section class="clients-section grey-bg">
+<!-- <section class="clients-section grey-bg">
     <div class="auto-container">
-        
         <div class="sponsors-outer">
-            <!--Sponsors Carousel-->
             <ul class="sponsors-carousel owl-carousel owl-theme">
                 @foreach($data['sponser'] as $sponser)
                 <li class="slide-item"><figure class="image-box"><a href="#"><img src="{{ asset($sponser->path)}}" alt="" title="{{ $sponser->name }}"></a></figure></li>
                 @endforeach
             </ul>
         </div>
-        
     </div>
-</section>
+</section> -->
 <!--End Clients Section-->
 
 <!--Map Section-->
-<section class="map-section">
-	<!--Map Outer-->
+<!-- <section class="map-section">
     <div class="map-outer">
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d214.38687338974862!2d76.70948258665899!3d30.71305929465336!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390fef17f948bd0f%3A0x1af43c10783161a0!2sTheFuenix%20%7C%20Best%20Digital%20Marketing%20Company%20in%20Mohali!5e0!3m2!1sen!2sin!4v1672817689583!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
-</section>
+</section> -->
 <!--End Map Section-->
 
 @endsection

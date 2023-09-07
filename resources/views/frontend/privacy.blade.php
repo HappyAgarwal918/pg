@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'Privacy Policy - {{ env("APP_URL")}}')
+@section('title', 'Privacy Policy | Happi To Help')
 @section('description', 'Shina Real Estate HTML Template')
 
 @section('content')

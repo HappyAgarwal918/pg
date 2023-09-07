@@ -1,5 +1,7 @@
 @extends('auth.layouts')
 
+@section('title', 'Email Verification | Happi To Help')
+
 @section('content')
 <div class="row justify-content-center align-items-center hight">
     <div class="col-md-8">

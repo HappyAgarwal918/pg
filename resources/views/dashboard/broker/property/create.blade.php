@@ -10,7 +10,7 @@
       <div class="card-body">
         <p class="card-title mb-5">Add Properties</p>
         <!-- MultiStep Form -->
-        <form action="{{ route('broker.property.store')}}" method="POST" id="multistep_form">
+        <form action="{{ route('broker.property.store')}}" method="POST" id="multistep_form" enctype="multipart/form-data">
           @csrf
           <div id="form1" class="tab">
             <div class="panel-body">
@@ -368,13 +368,9 @@
                 <div class="col-md-8">
                     <select name="tenant" class="form-select form-control" id="tenant">
                         <option value="">Select any one</option>
-                        <option value="All">All</option>
-                        <option value="Boys Only">Boys Only</option>
-                        <option value="Girls Only">Girls Only</option>
-                        <option value="Family Only">Family Only</option>
-                        <option value="Boys & Girls">Boys & Girls</option>
-                        <option value="Boys & Family">Boys & Family</option>
-                        <option value="Girls & Family">Girls & Family</option>
+                        @foreach($tenants as $tenant)
+                        <option value="{{$tenant->value}}">{{$tenant->name}}</option>
+                        @endforeach
                     </select>
                 <label id="tenant-error" class="error" for="tenant"></label>
                 </div>

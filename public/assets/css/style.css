@@ -1804,7 +1804,7 @@ img{
 
 .sec-title{
 	position:relative;
-	margin-bottom:70px;
+	margin-bottom:40px;
 }
 
 .sec-title .title{
@@ -1812,7 +1812,7 @@ img{
 	font-size:18px;
 	color:#71b100;
 	font-weight:500;
-	margin-bottom:20px;
+	margin-bottom:10px;
 	font-family: 'Yantramanav', sans-serif;
 }
 
@@ -1822,7 +1822,7 @@ img{
 	font-weight:700;
 	color:#1a1d1f;
 	line-height:1.2em;
-	padding-bottom:25px;
+	padding-bottom:15px;
 	display:inline-block;
 }
 
@@ -2195,14 +2195,14 @@ img{
 
 .property-section{
 	position:relative;
-	padding:80px 0px;
+	padding:40px 0px;
 }
 
 /*Property Block*/
 
 .property-block{
 	position:relative;
-	margin-bottom:70px;
+	margin-bottom:30px;
 }
 
 .property-block .inner-box{
@@ -2391,11 +2391,11 @@ img{
 
 .team-section{
 	position:relative;
-	padding:70px 0px 50px;
+	padding:60px 0px 40px;
 }
 
 .team-section.style-two .team-block{
-	margin-bottom:50px;
+	margin-bottom:30px;
 }
 
 .team-block{
@@ -3007,11 +3007,11 @@ img{
 
 .services-section{
 	position:relative;
-	padding:90px 0px 60px;
+	padding:40px 0px 40px;
 }
 
 .services-section.style-two{
-	padding-bottom:110px;
+	padding-bottom:40px;
 }
 
 .services-block{
@@ -4981,7 +4981,7 @@ img{
 
 .about-section{
 	position:relative;
-	padding:140px 0px 40px;
+	padding:60px 0px 40px;
 	background-repeat:no-repeat;
 	background-position:center center;
 }
@@ -5250,7 +5250,7 @@ img{
 
 .sidebar-page-container{
 	position:relative;
-	padding:80px 0px;
+	padding:60px 0px;
 }
 
 .sidebar-page-container .content-side,
@@ -5388,7 +5388,7 @@ img{
 
 .sidebar .sidebar-title{
 	position:relative;
-	margin-bottom:50px;	
+	margin-bottom:30px;	
 }
 
 .sidebar .sidebar-title h3{
@@ -5595,7 +5595,7 @@ img{
 	color:#71b100;
 	font-size:14px;
 	font-weight:700;
-	margin-bottom:25px;
+	margin-bottom:15px;
 	font-family: 'Raleway', sans-serif;
 }
 
@@ -5628,7 +5628,7 @@ img{
 
 .property-detail .inner-box .carousel-box{
 	position:relative;
-	margin-bottom:50px;
+	margin-bottom:30px;
 }
 
 .property-detail .inner-box .carousel-box .image{
@@ -5699,8 +5699,8 @@ img{
 
 .property-detail .inner-box .text{
 	position:relative;
-	padding-bottom:40px;
-	margin-bottom:45px;
+	padding-bottom:20px;
+	margin-bottom:30px;
 	border-bottom:2px solid #eeeeee;
 }
 
@@ -5733,7 +5733,7 @@ img{
 	font-size:24px;
 	line-height:1.2em;
 	font-weight:700;
-	margin-bottom:34px;
+	margin-bottom:20px;
 }
 
 .property-detail .inner-box h4{
@@ -5743,7 +5743,7 @@ img{
 .property-detail .inner-box .list-columns{
 	position:relative;
 	padding-bottom:30px;
-	margin-bottom:40px;
+	margin-bottom:30px;
 	border-bottom:2px solid #eeeeee;
 }
 
@@ -5964,7 +5964,7 @@ img{
 
 .contact-page-section{
 	position:relative;
-	padding:135px 0px 130px;
+	padding:60px 0px 60px;
 }
 
 /*Contact Form*/
@@ -6185,7 +6185,7 @@ img{
 
 .sidebar-widget{
     position: relative;
-    margin-bottom:60px;
+    margin-bottom:40px;
 }
 
 /*Search Box Widget*/
