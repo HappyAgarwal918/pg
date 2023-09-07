@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'About Us')
+@section('title', 'About Us | Happi To Help')
 @section('description', 'About Us')
 
 @section('content')
@@ -106,10 +106,9 @@
 <!--End Services Section-->
 
 <!--Clients Section-->
-<section class="clients-section style-two">
+<!-- <section class="clients-section style-two">
     <div class="auto-container">
         <div class="sponsors-outer">
-            <!--Sponsors Carousel-->
             <ul class="sponsors-carousel owl-carousel owl-theme">
                 @foreach($data['sponser'] as $sponser)
                 <li class="slide-item"><figure class="image-box"><a href="#"><img src="{{ asset($sponser->path)}}" alt="" title="{{ $sponser->name }}"></a></figure></li>
@@ -117,6 +116,6 @@
             </ul>
         </div>
     </div>
-</section>
+</section> -->
 <!--End Clients Section-->
 @endsection

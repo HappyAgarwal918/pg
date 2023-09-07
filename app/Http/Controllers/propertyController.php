@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\propertyImg;
 use File;
 use App\Models\vendorfeedback;
+use App\Models\tenants;
 
 class propertyController extends Controller
 {
@@ -23,8 +24,10 @@ class propertyController extends Controller
                             $query->where('excerpt', '1');
                          }
                     ])->get();
+
+        $tenants = tenants::get();
         
-        return view('frontend.properties', compact('data', 'wishlist'));
+        return view('frontend.properties', compact('data', 'wishlist', 'tenants'));
     }
 
     public function propertydetail(Request $request, $id)
@@ -56,8 +59,9 @@ class propertyController extends Controller
             }
 
             // echo"<pre>";print_r($data);die;
+            $tenants = tenants::get();
 
-            return view('frontend.properties', compact('data', 'wishlist'));
+            return view('frontend.properties', compact('data', 'wishlist', 'tenants'));
 
         }
 

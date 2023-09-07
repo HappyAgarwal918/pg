@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'Blogs')
+@section('title', 'Blogs | Happi To Help')
 @section('description', 'Shina Real Estate HTML Template')
 
 @section('content')

@@ -9,6 +9,7 @@ use App\Models\properties;
 use Mail;
 use App\Mail\DemoMail;
 use App\Models\propertyImg;
+use App\Models\tenants;
 
 class brokerPropertyController extends Controller
 {
@@ -35,7 +36,9 @@ class brokerPropertyController extends Controller
      */
     public function create()
     {
-        return view('dashboard.broker.property.create');
+        $tenants = tenants::get();
+
+        return view('dashboard.broker.property.create', compact('tenants'));
     }
 
     /**
@@ -46,47 +49,34 @@ class brokerPropertyController extends Controller
      */
     public function store(Request $request)
     {
+        $data['sb_room_count'] = NULL;
+        $data['sb_bathroom_count'] = NULL;
+        $data['sb_room_size'] = NULL;
+        $data['sb_category'] = NULL;
+        $data['sb_furnished_type'] = NULL;
+        $data['sb_price'] = NULL;
+        $data['db_room_count'] = NULL;
+        $data['db_bathroom_count'] = NULL;
+        $data['db_room_size'] = NULL;
+        $data['db_category'] = NULL;
+        $data['db_furnished_type'] = NULL;
+        $data['db_price'] = NULL;
+        $data['tb_room_count'] = NULL;
+        $data['tb_bathroom_count'] = NULL;
+        $data['tb_room_size'] = NULL;
+        $data['tb_category'] = NULL;
+        $data['tb_furnished_type'] = NULL;
+        $data['tb_price'] = NULL;
+        $data['fb_room_count'] = NULL;
+        $data['fb_bathroom_count'] = NULL;
+        $data['fb_room_size'] = NULL;
+        $data['fb_category'] = NULL;
+        $data['fb_furnished_type'] = NULL;
+        $data['fb_price'] = NULL;
+        $data['meal_type'] = NULL;
+        $data['parking'] = NULL;
+
         $data = $request->except(['_token']);
-
-        if(!in_array('single', $data['room_type'])){
-            $data['sb_room_count'] = NULL;
-            $data['sb_bathroom_count'] = NULL;
-            $data['sb_room_size'] = NULL;
-            $data['sb_category'] = NULL;
-            $data['sb_furnished_type'] = NULL;
-            $data['sb_price'] = NULL;
-        }
-        if(!in_array('double', $data['room_type'])){
-            $data['db_room_count'] = NULL;
-            $data['db_bathroom_count'] = NULL;
-            $data['db_room_size'] = NULL;
-            $data['db_category'] = NULL;
-            $data['db_furnished_type'] = NULL;
-            $data['db_price'] = NULL;
-        }
-        if(!in_array('triple', $data['room_type'])){
-            $data['tb_room_count'] = NULL;
-            $data['tb_bathroom_count'] = NULL;
-            $data['tb_room_size'] = NULL;
-            $data['tb_category'] = NULL;
-            $data['tb_furnished_type'] = NULL;
-            $data['tb_price'] = NULL;
-        }
-        if(!in_array('four', $data['room_type'])){
-            $data['fb_room_count'] = NULL;
-            $data['fb_bathroom_count'] = NULL;
-            $data['fb_room_size'] = NULL;
-            $data['fb_category'] = NULL;
-            $data['fb_furnished_type'] = NULL;
-            $data['fb_price'] = NULL;
-        }
-        if($data['food'] == 'no'){
-            $data['meal_type'] = NULL;
-
-        }
-        if(!in_array('parking', $data['amenities'])){
-            $data['parking'] = NULL;
-        }
 
         if ($request->filled(['room_type']))
         {
@@ -103,31 +93,35 @@ class brokerPropertyController extends Controller
         $user = properties::create($data);
 
         if($user){
-            $excerpt_img = $request->file('excerpt_img');
-            $input['imagename'] = time().'.'.$excerpt_img->extension();
+            if($request->file('excerpt_img')){
+                $excerpt_img = $request->file('excerpt_img');
+                $input['imagename'] = time().'.'.$excerpt_img->extension();
 
-            $destinationPath = public_path('property_img');
-            $excerpt_img->move($destinationPath, $input['imagename']);
+                $destinationPath = public_path('property_img');
+                $excerpt_img->move($destinationPath, $input['imagename']);
 
-            $imgdata = propertyImg::create([
-                'name'=> $input['imagename'],
-                'img_src'=> 'property_img/'.$input['imagename'],
-                'excerpt'=> '1',
-                'property_id'=> $user['id'],
-            ]);
-
-            $upload = [];
-            foreach ($request->file('upload') as $propertyimg) {
-                $input['images'] = time().rand(1,99).'.'.$propertyimg->extension();
-                $propertyimg->move($destinationPath, $input['images']);
-
-                $upload[]['name'] = $input['images'];
-
-                $img = propertyImg::create([
-                    'name'=> $input['images'],
-                    'img_src'=> 'property_img/'.$input['images'],
+                $imgdata = propertyImg::create([
+                    'name'=> $input['imagename'],
+                    'img_src'=> 'property_img/'.$input['imagename'],
+                    'excerpt'=> '1',
                     'property_id'=> $user['id'],
                 ]);
+            }
+
+            $upload = [];
+            if (is_array($request->file('upload')) || is_object($request->file('upload'))){
+                foreach ($request->file('upload') as $propertyimg) {
+                    $input['images'] = time().rand(1,99).'.'.$propertyimg->extension();
+                    $propertyimg->move($destinationPath, $input['images']);
+
+                    $upload[]['name'] = $input['images'];
+
+                    $img = propertyImg::create([
+                        'name'=> $input['images'],
+                        'img_src'=> 'property_img/'.$input['images'],
+                        'property_id'=> $user['id'],
+                    ]);
+                }
             }
                  
         }
@@ -135,8 +129,11 @@ class brokerPropertyController extends Controller
         if($user){
 
             $mailData = [
-                'title' => 'Mail from '.env('APP_NAME'),
-                'body' => 'Property added Successfully'
+                'name' => "abc",
+                'email' => "abc",
+                'subject' => "abc",
+                'phone_number' => "abc",
+                'message' => "abc",
             ];
              
             Mail::to(Auth()->user()->email)->cc('info@happitohelp.com')->send(new DemoMail($mailData));
@@ -185,8 +182,10 @@ class brokerPropertyController extends Controller
         $data['room_type'] = explode(', ', $data->room_type);
         $data['amenities'] = explode(', ', $data->amenities);
         $data['image'] = propertyImg::where('property_id', $pid)->where('excerpt', 0)->get();
+
+        $tenants = tenants::get();
         
-        return view('dashboard.broker.property.edit', compact('data'));
+        return view('dashboard.broker.property.edit', compact('data', 'tenants'));
     }
 
     /**
@@ -198,51 +197,38 @@ class brokerPropertyController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $data['sb_room_count'] = NULL;
+        $data['sb_bathroom_count'] = NULL;
+        $data['sb_room_size'] = NULL;
+        $data['sb_category'] = NULL;
+        $data['sb_furnished_type'] = NULL;
+        $data['sb_price'] = NULL;
+        $data['db_room_count'] = NULL;
+        $data['db_bathroom_count'] = NULL;
+        $data['db_room_size'] = NULL;
+        $data['db_category'] = NULL;
+        $data['db_furnished_type'] = NULL;
+        $data['db_price'] = NULL;
+        $data['tb_room_count'] = NULL;
+        $data['tb_bathroom_count'] = NULL;
+        $data['tb_room_size'] = NULL;
+        $data['tb_category'] = NULL;
+        $data['tb_furnished_type'] = NULL;
+        $data['tb_price'] = NULL;
+        $data['fb_room_count'] = NULL;
+        $data['fb_bathroom_count'] = NULL;
+        $data['fb_room_size'] = NULL;
+        $data['fb_category'] = NULL;
+        $data['fb_furnished_type'] = NULL;
+        $data['fb_price'] = NULL;
+        $data['meal_type'] = NULL;
+        $data['parking'] = NULL;
+
         $pid = decrypt($id);
 
         $property = properties::where('id', $pid);
 
         $data = $request->except(['_token', '_method','excerpt_img','submit']);
-
-        if(!in_array('single', $data['room_type'])){
-            $data['sb_room_count'] = NULL;
-            $data['sb_bathroom_count'] = NULL;
-            $data['sb_room_size'] = NULL;
-            $data['sb_category'] = NULL;
-            $data['sb_furnished_type'] = NULL;
-            $data['sb_price'] = NULL;
-        }
-        if(!in_array('double', $data['room_type'])){
-            $data['db_room_count'] = NULL;
-            $data['db_bathroom_count'] = NULL;
-            $data['db_room_size'] = NULL;
-            $data['db_category'] = NULL;
-            $data['db_furnished_type'] = NULL;
-            $data['db_price'] = NULL;
-        }
-        if(!in_array('triple', $data['room_type'])){
-            $data['tb_room_count'] = NULL;
-            $data['tb_bathroom_count'] = NULL;
-            $data['tb_room_size'] = NULL;
-            $data['tb_category'] = NULL;
-            $data['tb_furnished_type'] = NULL;
-            $data['tb_price'] = NULL;
-        }
-        if(!in_array('four', $data['room_type'])){
-            $data['fb_room_count'] = NULL;
-            $data['fb_bathroom_count'] = NULL;
-            $data['fb_room_size'] = NULL;
-            $data['fb_category'] = NULL;
-            $data['fb_furnished_type'] = NULL;
-            $data['fb_price'] = NULL;
-        }
-        if($data['food'] == 'no'){
-            $data['meal_type'] = NULL;
-
-        }
-        if(!in_array('parking', $data['amenities'])){
-            $data['parking'] = NULL;
-        }
 
         if ($request->filled(['room_type'])) 
         {
@@ -267,12 +253,24 @@ class brokerPropertyController extends Controller
             $destinationPath = public_path('property_img');
             $excerpt_img->move($destinationPath, $input['imagename']);
 
-            $imgdata = propertyImg::where('property_id', $pid)
-            ->where('excerpt', '1')
-            ->update([
-                'name'=> $input['imagename'],
-                'img_src'=> 'property_img/'.$input['imagename'],
-            ]);
+            $exp_img = propertyImg::where('property_id', $pid)
+                ->where('excerpt', '1')->first(); 
+
+            if($exp_img){
+                $imgdata = propertyImg::where('property_id', $pid)
+                ->where('excerpt', '1')
+                ->update([
+                    'name'=> $input['imagename'],
+                    'img_src'=> 'property_img/'.$input['imagename'],
+                ]);
+            }else{
+                $imgdata = propertyImg::create([
+                    'name'=> $input['imagename'],
+                    'img_src'=> 'property_img/'.$input['imagename'],
+                    'excerpt'=> '1',
+                    'property_id'=> $pid,
+                ]);
+            }
         }
 
 

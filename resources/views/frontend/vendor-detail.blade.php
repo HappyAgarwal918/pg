@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'Properties')
+@section('title', 'Our Trusted Vendors for Exceptional Products and Services | Happi To Help')
 @section('description', 'Shina Real Estate HTML Template')
 
 @section('content')

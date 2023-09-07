@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'Terms and Conditions')
+@section('title', 'Terms and Conditions | Happi To Help')
 @section('description', 'Happi To Help')
 
 @section('content')
