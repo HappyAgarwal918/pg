@@ -76,6 +76,7 @@ class ownerPropertyController extends Controller
         $data['parking'] = NULL;
 
         $data = $request->except(['_token']);
+        $data['pid'] = random_int(1000, 9999);
 
         if ($request->filled(['room_type'])) 
         {

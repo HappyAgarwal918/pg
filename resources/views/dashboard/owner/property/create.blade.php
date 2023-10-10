@@ -10,7 +10,7 @@
       <div class="card-body">
         <p class="card-title mb-5">Add Properties</p>
         <!-- MultiStep Form -->
-        <form action="{{ route('owner.property.store') }}" method="post" id="multistep_form" enctype="multipart/form-data">
+        <form action="{{ route('owner.property.store') }}" method="post" id="multistep_form" enctype="multipart/form-data" class="prevent_multiple_submit">
           @csrf
           <div id="form1" class="tab">
             <div class="panel-body">
@@ -485,7 +485,7 @@
             <div>
                 <button type="button" name="previous" class="previous btn btn-light">Previous</button>
                 <button type="button" name="next" class="next btn btn-primary">Next</button>
-                <button type="submit" name="submit" class="submit btn btn-primary">Submit</button>
+                <button type="submit" name="submit" class="prevent_multiple_submit submit btn btn-primary">Submit</button>
             </div>
           </div>
         </form>

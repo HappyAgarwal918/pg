@@ -101,15 +101,14 @@
           fb_category: "required",
           fb_furnished_type: "required",
           fb_price: "required",
-          locality: "required",
-          privacy_policy: "required",
-          privacy_policy_url: {
-              required: true,
-              pattern: '(http|https)?://.*'
-          },          
-          email: {
-              required: true,
-              email: true
+          food: "required",
+          meal_type: "required",
+          tenant: "required",
+          parking: "required",
+          description: "required",
+          "amenities[]": {
+             required: true,
+             minlength: 2
           },
           "room_type[]": { 
               required: true, 
@@ -118,22 +117,18 @@
         },
         // Specify validation error messages
         messages: {
-          c_id:    "Country is required",
-          s_id:    "State is required",
-          email: {
-            required:   "Email is required",
-            email:    "Please enter a valid e-mail",
-          },
-          "room_type[]":    "Select Atleast One",
+          name:    "Name is required",
+          "room_type[]":    "Select atleast one",
+          "amenities[]": "Select atleast two",
         }
     }
     $("#multistep_form").multiStepForm(
     {
       // defaultStep:0,
       beforeSubmit : function(form, submit){
-        console.log("called before submiting the form");
-        console.log(form);
-        console.log(submit);
+        // console.log("called before submiting the form");
+        // console.log(form);
+        // console.log(submit);
       },
       validations:val,
     }

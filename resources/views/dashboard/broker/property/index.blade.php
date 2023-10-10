@@ -67,15 +67,14 @@
                     <td class="white-sp-normal">{{ $properties->tenant }}</td>
                     <td class="white-sp-normal">{{ $properties->amenities }}</td>
                     <td>
-                        <div class="badge badge-success badge-success-alt white-sp-normal"><a href="{{ route('broker.property.edit', encrypt($properties->id)) }}">Edit</a></div>
-                        <div class="badge badge-success badge-success-alt white-sp-normal"><a href="{{ route('broker.property.show',encrypt($properties->id)) }}">View</a></div>
-                        <div class="badge badge-success badge-success-alt white-sp-normal">
-                        <a href="{{ route('broker.property.destroy', encrypt($properties->id)) }}"
-                            onclick="event.preventDefault();
-                            document.getElementById('delete-property').submit();">
-                            Delete
+                          <a class="px-2" href="{{ route('broker.property.edit', encrypt($properties->id)) }}">
+                          <i class="fa fa-edit fa-lg text-dark"></i></a>
+                          <a class="px-2" href="{{ route('broker.property.show',encrypt($properties->id)) }}"><i class="fa fa-file fa-lg"></i></a>
+                        <a class="px-2" onclick="event.preventDefault();
+                            document.getElementById('delete-property{{$properties->id}}').submit();">
+                            <i class="fa fa-trash fa-lg text-danger" aria-hidden="true"></i>
                         </a>
-                        <form id="delete-property" action="{{ route('broker.property.destroy', encrypt($properties->id)) }}" method="POST" >
+                        <form id="delete-property{{$properties->id}}" action="{{ route('broker.property.destroy', encrypt($properties->id)) }}" method="POST" >
                         <input name="_method" type="hidden" value="DELETE">
                           @csrf
                         </form>

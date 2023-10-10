@@ -10,7 +10,7 @@
       <div class="card-body">
         <p class="card-title mb-5">Add Properties</p>
         <!-- MultiStep Form -->
-        <form action="{{ route('broker.property.store')}}" method="POST" id="multistep_form" enctype="multipart/form-data">
+        <form action="{{ route('broker.property.store')}}" method="POST" id="multistep_form" enctype="multipart/form-data" class="prevent_multiple_submit">
           @csrf
           <div id="form1" class="tab">
             <div class="panel-body">
@@ -330,7 +330,8 @@
               </div>
               <div class="form-group form_part row">
                 <label for="food" class="col-md-3 col-form-label">Food Availibility</label>
-                <div class="col-md-8 d-flex">
+                <div class="col-md-8">
+                  <div class="d-flex">
                   <div class="form-check">
                     <label class="form-check-label" for="food1">
                     <input class="form-check-input ml-0" type="radio" name="food" id="food1" value="yes">
@@ -340,6 +341,7 @@
                     <label class="form-check-label" for="food2">
                     <input class="form-check-input ml-0" type="radio" name="food" id="food2" value="no">
                     No</label>
+                  </div>
                   </div>
                 <label id="food-error" class="error" for="food"></label>
                 </div>
@@ -423,7 +425,7 @@
                     <input class="form-check-input ml-0" type="checkbox" name="amenities[]" id="geyser" value="geyser">
                     Geyser</label>
                   </div>
-                <label id="amenities-error" class="error" for="amenities"></label>
+                  <label id="amenities[]-error" class="error" for="amenities[]"></label>
                 </div>
               </div>
               <div class="form-group form_part row parking-1 hidden">
@@ -486,7 +488,7 @@
             <div>
                 <button type="button" name="previous" class="previous btn btn-light">Previous</button>
                 <button type="button" name="next" class="next btn btn-primary">Next</button>
-                <button type="submit" name="submit" class="submit btn btn-primary">Submit</button>
+                <button type="submit" name="submit" class="prevent_multiple_submit submit btn btn-primary">Submit</button>
             </div>
           </div>
         </form>
