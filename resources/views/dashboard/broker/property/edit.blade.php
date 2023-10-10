@@ -18,7 +18,7 @@
 	    <div class="card">
 	      	<div class="card-body">
 	      		<p class="card-title">Edit Properties</p>
-	      		<form action="{{ route('broker.property.update',encrypt($data->id))}}" method="POST" enctype="multipart/form-data">
+	      		<form action="{{ route('broker.property.update',encrypt($data->id))}}" class="prevent_multiple_submit" method="POST" enctype="multipart/form-data">
                   <input name="_method" type="hidden" value="PUT">
           		@csrf
 	          		<div class="form-group form_part row">
@@ -440,7 +440,7 @@
 		                	</div>
 		                </div>
 		            </div>
-		            <div><button type="submit" name="submit" class="btn btn-primary">Submit</button></div>
+		            <div><button type="submit" name="submit" class="prevent_multiple_submit btn btn-primary">Submit</button></div>
 	            </form>
 	      	</div>
 	  	</div>

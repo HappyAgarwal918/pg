@@ -13,6 +13,7 @@ class properties extends Model
     protected $table = 'properties';
 
     protected $fillable = [
+        'pid',
         'locality',
         'latitude',
         'longitude',
