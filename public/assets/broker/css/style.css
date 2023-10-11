@@ -20,7 +20,7 @@
     color: #fff;
   }
   .profile_pic{
-    background-size: cover;
+    background-size: contain;
     background-repeat:no-repeat;
     height: 400px;
     background-position: center;

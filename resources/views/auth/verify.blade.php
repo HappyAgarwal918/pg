@@ -6,8 +6,8 @@
 <div class="row justify-content-center align-items-center hight">
     <div class="col-md-8">
         <div class="card">
-            <div class="card-header">
-                <span style="font-size: 28px;font-family: cursive; background: -webkit-linear-gradient(45deg, #2b286c, #3c85a3); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Verify</span>
+            <div class="card-header" style="background-color:#005d7a;">
+                <span style="font-size: 28px;font-family: cursive; color: #fff;">Verify</span>
             </div>
             <div class="card-body">
                 @if (session('resent'))

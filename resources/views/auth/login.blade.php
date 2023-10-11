@@ -14,8 +14,8 @@
             <span>Don't have an account <a href="{{ route('register')}}">Register</a></span>
         </div>
         <div class="card">
-            <div class="card-header">
-                <span style="font-size: 28px;font-family: cursive; background: -webkit-linear-gradient(45deg, #2b286c, #3c85a3); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Login Form</span>
+            <div class="card-header" style="background-color:#005d7a;">
+                <span style="font-size: 28px;font-family: cursive; color: #fff;">Login Form</span>
             </div>
             <div class="card-body">
                 <form method="POST" action="{{ route('login') }}">

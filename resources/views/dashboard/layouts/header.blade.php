@@ -39,10 +39,14 @@
         </div>
       </li>
       <li class="nav-item nav-profile dropdown">
-        @if(Auth()->user()->profile_pic == NULL)
-        <a class="nav-link dropdown-toggle nav-profile-img" href="#" data-toggle="dropdown" id="profileDropdown" style="background-image: url({{ asset('profilepic/default.jpg')}});">
+        @if(Auth()->user()->profile_pic == NULL && Auth()->user()->gender == "Male")
+        <a class="nav-link dropdown-toggle nav-profile-img" href="#" data-toggle="dropdown" id="profileDropdown" style="background-image: url({{ asset('profilepic/defaultmale.jpg')}});">
         <!-- <img src="{{ asset('assets/broker/images/faces/face28.jpg')}}" alt="profile"/> -->
         </a>
+        @elseif(Auth()->user()->profile_pic == NULL && Auth()->user()->gender == "Female")
+          <a class="nav-link dropdown-toggle nav-profile-img" href="#" data-toggle="dropdown" id="profileDropdown" style="background-image: url({{ asset('profilepic/defaultfemale.jpg')}});"></a>
+        @elseif(Auth()->user()->profile_pic == NULL && Auth()->user()->gender == "Other")
+          <a class="nav-link dropdown-toggle nav-profile-img" href="#" data-toggle="dropdown" id="profileDropdown" style="background-image: url({{ asset('profilepic/default.jpg')}});"></a>
         @else
         <a class="nav-link dropdown-toggle nav-profile-img" href="#" data-toggle="dropdown" id="profileDropdown" style="background-image: url({{ asset(Auth()->user()->profile_pic) }});">
         </a>

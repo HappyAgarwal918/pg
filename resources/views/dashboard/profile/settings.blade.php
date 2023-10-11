@@ -185,7 +185,15 @@
       <div class="card">
         <div class="card-body">
           <h4 class="card-title">Profile Picture</h4>
-            @if($data->profile_pic == NULL)
+            @if($data->profile_pic == NULL && $data->gender == "Male")
+            <div class="profile_pic" 
+                style="background-image: url({{ asset('profilepic/defaultmale.jpg')}});">
+            </div>
+            @elseif($data->profile_pic == NULL && $data->gender == "Female")
+            <div class="profile_pic" 
+                style="background-image: url({{ asset('profilepic/defaultfemale.jpg')}});">
+            </div>
+            @elseif($data->profile_pic == NULL && $data->gender == "Other")
             <div class="profile_pic" 
                 style="background-image: url({{ asset('profilepic/default.jpg')}});">
             </div>

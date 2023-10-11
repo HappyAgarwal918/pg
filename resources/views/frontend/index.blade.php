@@ -93,8 +93,12 @@
                         <a href="{{ route('vendordetail',encrypt($agent->id))}}">
                             @if( $agent->profile_pic != NULL)
                                 <img src="{{ asset($agent->profile_pic)}}" alt="">
-                            @else
-                            <img src="{{ asset('profilepic/default.jpg')}}" alt="" />
+                            @elseif($agent->profile_pic == NULL && $agent->gender == "Male")
+                            <img src="{{ asset('profilepic/defaultmale.jpg')}}">
+                            @elseif($agent->profile_pic == NULL && $agent->gender == "Female")
+                            <img src="{{ asset('profilepic/defaultfemale.jpg')}}">
+                            @else($agent->profile_pic == NULL && $agent->gender == "Other")
+                            <img src="{{ asset('profilepic/default.jpg')}}">
                             @endif
                         </a>
                         <div class="social-box">
