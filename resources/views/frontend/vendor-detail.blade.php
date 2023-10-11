@@ -68,6 +68,7 @@
             <div class="col-md-3 col-sm-12 col-xs-12"></div>
             <!--Image Column-->
             <div class="image-column col-md-6 col-sm-12 col-xs-12">
+                @if($data->type == "4")
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">Rating & Review</h4>
@@ -185,6 +186,7 @@
 </form>
                     </div>
                 </div>
+                @endif
             </div>
         </div>
     </div>
@@ -195,6 +197,12 @@
 <section class="property-section light-grey-bg">
 	<div class="auto-container">
     	<!--Sec Title-->
+        @if($data['properties']->isEmpty())
+        <div class="sec-title centered">
+            <h2>No Properties Added</h2>
+            <div class="separator"></div>
+        </div>
+        @else
         <div class="sec-title centered">
         	<div class="title">{{ $data->username }} Properties For Rent</div>
             <h2>Properties For Rent</h2>
@@ -204,6 +212,7 @@
         <div class="row clearfix" id="property">
             @include('frontend.property_data')
         </div>
+        @endif
     </div>
 </section>
 
