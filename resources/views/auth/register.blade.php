@@ -9,8 +9,8 @@
             <span>Account already exist <a href="{{ route('login')}}">Login</a></span>
         </div>
         <div class="card">
-            <div class="card-header">
-                <span style="font-size: 28px;font-family: cursive; background: -webkit-linear-gradient(45deg, #2b286c, #3c85a3); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Register Form</span>
+            <div class="card-header" style="background-color:#005d7a;">
+                <span style="font-size: 28px;font-family: cursive; color: #fff;">Register Form</span>
             </div>
             <div class="card-body">
                 <form method="POST" action="{{ route('register') }}">

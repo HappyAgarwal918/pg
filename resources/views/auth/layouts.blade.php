@@ -22,7 +22,7 @@
                     animation: bgslide 2.4s forwards;
           }
           .bg-illustration img {
-            width: 248px;
+            width: 150px;
             -webkit-user-select: none;
                -moz-user-select: none;
                 -ms-user-select: none;
@@ -105,7 +105,7 @@
   <body>
     <div class="parent">
       <div class="bg-illustration">
-          <img src="{{ asset(''.$frontend['logo'][0]->path)}}" alt="logo">   
+        <a href="{{ route('index')}}"><img src="{{ asset(''.$frontend['logo'][0]->path)}}" alt="logo"></a>             
       </div>
       @yield('content')
     </div>
