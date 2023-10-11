@@ -33,11 +33,15 @@
                     <h2>{{ $data->first_name }}</h2>
                     <!-- <div class="title">(Real Estate Group)</div> -->
                     <div class="image">
-                        @if($data->profile_pic != NULL)
-                        <div class="vendor-img" 
+                        @if( $agent->profile_pic != NULL)
+                            <div class="vendor-img" 
                             style="background-image:url({{ asset($data->profile_pic) }});"></div>
-                        @else
-                        <img src="{{ asset('profilepic/default.jpg')}}" alt="" />
+                        @elseif($agent->profile_pic == NULL && $agent->gender == "Male")
+                        <img src="{{ asset('profilepic/defaultmale.jpg')}}">
+                        @elseif($agent->profile_pic == NULL && $agent->gender == "Female")
+                        <img src="{{ asset('profilepic/defaultfemale.jpg')}}">
+                        @else($agent->profile_pic == NULL && $agent->gender == "Other")
+                        <img src="{{ asset('profilepic/default.jpg')}}">
                         @endif
                     </div>
                     <ul class="list-style-two ms-3 mt-3">
