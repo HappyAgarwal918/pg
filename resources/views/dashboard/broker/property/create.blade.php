@@ -488,7 +488,8 @@
             <div>
                 <button type="button" name="previous" class="previous btn btn-light">Previous</button>
                 <button type="button" name="next" class="next btn btn-primary">Next</button>
-                <button type="submit" name="submit" class="prevent_multiple_submit submit btn btn-primary">Submit</button>
+                <button type="submit" name="submit" class="submit btn btn-primary">Submit</button>
+                <button id="please-wait" class="btn btn-primary" style="display: none;" disabled="disabled">Please wait...</button>
             </div>
           </div>
         </form>
