@@ -118,8 +118,14 @@
 
         autocomplete.addListener('place_changed', function () {
             var place = autocomplete.getPlace();
-            $('#latitude').val(place.geometry['location'].lat());
-            $('#longitude').val(place.geometry['location'].lng());
+            var latitude = place.geometry.location.lat();
+            var limitedLatitude = latitude.toFixed(8); // Limit to 4 decimal places
+
+            var longitude = place.geometry.location.lng();
+            var limitedLongitude = longitude.toFixed(8); // Limit to 4 decimal places
+
+            $('#latitude').val(limitedLatitude);
+            $('#longitude').val(limitedLongitude);
         });
     }
 </script>
