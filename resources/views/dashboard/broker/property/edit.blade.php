@@ -440,7 +440,10 @@
 		                	</div>
 		                </div>
 		            </div>
-		            <div><button type="submit" name="submit" class="prevent_multiple_submit btn btn-primary">Submit</button></div>
+		            <div>
+		            	<button type="submit" name="submit" class="btn btn-primary">Submit</button>
+		            	<button id="please-wait" class="btn btn-primary" style="display: none;" disabled="disabled">Please wait...</button>
+		            </div>
 	            </form>
 	      	</div>
 	  	</div>

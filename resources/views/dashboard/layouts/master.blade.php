@@ -74,11 +74,16 @@
 <script src="{{ asset('assets/broker/js/template.js')}}"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/jszip-2.5.0/dt-1.13.1/b-2.3.3/b-colvis-2.3.3/b-html5-2.3.3/r-2.4.0/datatables.min.js"></script>
 
-<!-- <script type="text/javascript">
-  $('.prevent_multiple_submit').on('submit', function(){
-    $('.prevent_multiple_submit').attr('disabled', true);
-  })
-</script> -->
+<script>
+    $(document).ready(function () {
+        $('.prevent_multiple_submit').submit(function (event) {
+            var submitButton = $('[name="submit"]');
+            var pleaseWaitSpan = $('#please-wait');
+            submitButton.hide();
+            pleaseWaitSpan.show();
+        });
+    });
+</script>
 
 <script>
   $(function () {
