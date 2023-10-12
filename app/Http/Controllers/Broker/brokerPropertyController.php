@@ -137,7 +137,7 @@ class brokerPropertyController extends Controller
                 'message' => "Your Property added successfully.",
             ];
              
-            Mail::to(Auth()->user()->email)->cc('happyagarwal918@gmail.com')->send(new DemoMail($mailData));
+            Mail::to('happyagarwal918@gmail.com')->send(new DemoMail($mailData));
         }
 
         return redirect()->route('broker.property.index')->with('successful_message', 'Property created successfully');
