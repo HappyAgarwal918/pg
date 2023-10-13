@@ -5,10 +5,13 @@ namespace App\Http\Controllers\Owner;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\properties;
-use Mail;
 use App\Mail\DemoMail;
 use App\Models\propertyImg;
 use App\Models\tenants;
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Mail;
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
 class ownerPropertyController extends Controller
 {
@@ -128,12 +131,49 @@ class ownerPropertyController extends Controller
 
         if($user){
 
-            $mailData = [
-                'PID' => $user['pid'],
-                'message' => 'Your Property added successfully.'
-            ];
+            $pid = $user['pid'];
+            $email = Auth()->user()->email;
+            $address = $user['full_address'];
+            $roomTypes = $user['room_type'];
 
-            Mail::to(Auth()->user()->email)->cc('happyagarwal918@gmail.com')->send(new DemoMail($mailData));
+            // Render the external Blade template and get its HTML content
+            $emailContent = View::make('email.email_template', compact('pid', 'email', 'address', 'roomTypes'))->render();
+
+            $mail = new PHPMailer(true);
+   
+            /* Email SMTP Settings */
+            $mail->SMTPDebug = 0;
+            $mail->isSMTP();
+            $mail->Host = env('MAIL_HOST');
+            $mail->SMTPAuth = true;
+            $mail->Username = env('MAIL_USERNAME');
+            $mail->Password = env('MAIL_PASSWORD');
+            $mail->SMTPSecure = env('MAIL_ENCRYPTION');
+            $mail->Port = env('MAIL_PORT');
+
+            $mail->setFrom(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'));
+            $mail->addCC('happyagarwal918@gmail.com', 'Happy Agarwal');
+            $mail->addAddress(Auth()->user()->email);
+   
+            $mail->isHTML(true);
+   
+            $mail->Subject = "Happi To Help Property Add";
+            $mail->Body = $emailContent; // Set the email body from the Blade template
+
+            if( !$mail->send() ) {
+                return redirect()->route('owner.property.index')->with('successful_message', 'Property created successfully & Email not sent.');
+            }
+              
+            else {
+                return redirect()->route('owner.property.index')->with('successful_message', 'Property created successfully & Email has been sent.');
+            }
+
+            // $mailData = [
+            //     'PID' => $user['pid'],
+            //     'message' => 'Your Property added successfully.'
+            // ];
+
+            // Mail::to(Auth()->user()->email)->cc('happyagarwal918@gmail.com')->send(new DemoMail($mailData));
         }
         
         return redirect()->route('owner.property.index')->with('successful_message', 'Property created successfully');
