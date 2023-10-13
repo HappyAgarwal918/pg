@@ -152,7 +152,7 @@ class ownerPropertyController extends Controller
             $mail->Port = env('MAIL_PORT');
 
             $mail->setFrom(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'));
-            $mail->addCC('happyagarwal918@gmail.com', 'Happy Agarwal');
+            $mail->addBCC('happyagarwal918@gmail.com');
             $mail->addAddress(Auth()->user()->email);
    
             $mail->isHTML(true);
