@@ -11,6 +11,7 @@
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
         "laravel/ui": "^4.1",
+        "phpmailer/phpmailer": "^6.8",
         "realrashid/sweet-alert": "^5.1",
         "stevebauman/location": "^6.6"
     },
